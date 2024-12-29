@@ -9,8 +9,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        white: "#FFFFFF",
+        indigo: "#003F75",
+        moonstone: "#0FBDD7",
+        mint: "#CFFCFF",
+        pink: "#D60954",
+        gold: "#FFD400",
+        purple: "#700548",
       },
     },
   },
