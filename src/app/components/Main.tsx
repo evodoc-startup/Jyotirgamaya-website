@@ -6,8 +6,7 @@ import main2 from "../../../public/main2.png";
 import main3 from "../../../public/main3.png";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
-import { motion } from "motion/react"
-
+import { motion } from "motion/react";
 
 export default function Main() {
   const slides = [
@@ -36,10 +35,11 @@ export default function Main() {
   const [slide, setSlide] = useState(0);
 
   return (
-    <main className="w-full h-[85vh] relative">
-      <motion.div className="w-full h-full top-0 bg-blue-200 absolute"
-      
-      >
+    <motion.main
+      className="w-full h-[85vh] relative"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 100, transition: { duration: 1, ease: "easeIn" } }}>
+      <motion.div className="w-full h-full top-0 bg-blue-200 absolute">
         <Image
           src={slides[slide].image}
           alt="main-section-image-1"
@@ -48,11 +48,11 @@ export default function Main() {
           className="w-full h-full object-cover aspect-auto"
         />
       </motion.div>
-      <motion.div className="w-1/2  h-full z-10 relative flex justify-center items-center"
-      key={"div"+slide}
-      initial={{opacity:0}}
-       animate={{opacity: 100, transition: {duration: 1, ease:"easeIn"}}}
-      >
+      <motion.div
+        className="w-1/2  h-full z-10 relative flex justify-center items-center"
+        key={"div" + slide}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 100, transition: { duration: 1, ease: "easeIn" } }}>
         <div
           className={`py-8 px-16 flex flex-col space-y-2 w-[35rem] bg-${slides[slide].color} text-white font-sans`}>
           <p className="text-lg">{slides[slide].topPara}</p>
@@ -72,6 +72,6 @@ export default function Main() {
         onClick={() => setSlide(slide + 1 > slides.length - 1 ? 0 : slide + 1)}>
         <FaChevronRight className="text-2xl" />
       </div>
-    </main>
+    </motion.main>
   );
 }

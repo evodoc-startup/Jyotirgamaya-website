@@ -1,15 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
-import { FaTelegramPlane } from "react-icons/fa";
-import { IoLogoWhatsapp } from "react-icons/io";
-import { FaLinkedin } from "react-icons/fa";
+import { FaInstagram, FaWhatsapp, FaLinkedin, FaTelegramPlane } from "react-icons/fa";
 import type { Social, NavigationItem } from "@/types";
 import { colors } from "@/globals";
-import { usePathname } from "next/navigation";
 import random from "random";
 import NavItems from "./NavItems";
+import {motion} from "motion/react"
 
 function Navbar() {
   const [navItems, setNavItems] = useState<NavigationItem[]>([]);
@@ -74,7 +71,7 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-white py-2">
+    <motion.nav className="bg-white py-2 md:block hidden sticky top-0 z-50 w-screen">
       <div className="container mx-auto flex justify-between items-center cursor-pointer">
         <Link href={"/"}>
           <img src="logo.png" alt="Logo" className="h-20 w-auto" />
@@ -94,7 +91,7 @@ function Navbar() {
           ))}
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
 
