@@ -1,21 +1,41 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { FaInstagram, FaWhatsapp, FaLinkedin, FaTelegramPlane } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaWhatsapp,
+  FaLinkedin,
+  FaTelegramPlane,
+} from "react-icons/fa";
+import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import type { Social, NavigationItem } from "@/types";
-import { colors } from "@/globals";
-import random from "random";
 import NavItems from "./NavItems";
-import {motion} from "motion/react"
+import { motion } from "motion/react";
 
 function Navbar() {
-  const [navItems, setNavItems] = useState<NavigationItem[]>([]);
-
-  function getRandomColor() {
-    const randomIndex = Math.floor(random.int(1, colors.length - 1));
-    console.log(randomIndex);
-    return colors[randomIndex];
-  }
+  const [phoneNavOpen, setPhoneNavOpen] = useState(false);
+  const navItems: NavigationItem[] = [
+    {
+      name: "Home",
+      link: "/",
+    },
+    {
+      name: "Autism Care Center",
+      link: "/autism-care-center",
+    },
+    {
+      name: "Services",
+      link: "/services",
+    },
+    {
+      name: "Internships",
+      link: "/internships",
+    },
+    {
+      name: "About Us",
+      link: "/about-us",
+    },
+  ];
 
   const socials: Social[] = [
     {
@@ -40,46 +60,16 @@ function Navbar() {
     },
   ];
 
-  useEffect(() => {
-    setNavItems([
-      {
-        name: "Home",
-        link: "/",
-        color: getRandomColor(),
-      },
-      {
-        name: "Autism Care Center",
-        link: "/autism-care-center",
-        color: getRandomColor(),
-      },
-      {
-        name: "Services",
-        link: "/services",
-        color: getRandomColor(),
-      },
-      {
-        name: "Internships",
-        link: "/internships",
-        color: getRandomColor(),
-      },
-      {
-        name: "About Us",
-        link: "/about-us",
-        color: getRandomColor(),
-      },
-    ]);
-  }, []);
-
   return (
-    <motion.nav className="bg-white py-2 md:block hidden sticky top-0 z-50 w-screen">
-      <div className="container mx-auto flex justify-between items-center cursor-pointer">
+    <nav className={`bg-white py-2 flex justify-center sticky top-0 z-50 w-screen`}>
+      <div className="flex md:justify-around justify-between px-6 w-full items-center cursor-pointer text-nowrap">
         <Link href={"/"}>
-          <img src="logo.png" alt="Logo" className="h-20 w-auto" />
+          <img src="logo.png" alt="Logo" className="h-20 w-auto aspect-auto" />
         </Link>
-        <ul className="flex w-fit space-x-10 text-base">
-          <NavItems items={navItems} />
+        <ul className="sm:flex hidden w-fit md:space-x-10 space-x-4 md:justify-normal justify-end text-base">
+          <NavItems items={navItems} phoneNavOpen = {phoneNavOpen} setPhoneNavOpen={setPhoneNavOpen}/>
         </ul>
-        <div className="flex space-x-5">
+        <div className="hidden space-x-5 lg:flex">
           {socials.map((social: Social, index: number) => (
             <Link
               href={social.link}
@@ -91,7 +81,45 @@ function Navbar() {
           ))}
         </div>
       </div>
-    </motion.nav>
+      <div className="flex sm:hidden w-1/2 text-5xl items-center justify-end mr-2">
+        <motion.span
+          animate={{
+            left: phoneNavOpen ? 0 : "initial", // Rotate 90 degrees when open
+            rotateY: phoneNavOpen ? 180 : 0,
+          }}
+          transition={{
+            type: "tween",
+            duration: 0.6,
+          }}
+          className="absolute z-20 text-black">
+          <HiOutlineMenuAlt3 onClick={() => setPhoneNavOpen((prev) => !prev)} />
+        </motion.span>
+      </div>
+      <motion.div className="sm:hidden fixed top-0 left-[-1000px] h-full w-full bg-white"
+      animate={{
+        left: phoneNavOpen ? 0 : -1000,
+        transition : {
+          duration : 0.6,
+          type: "tween"
+        }
+      }}
+      >
+        <ul className="sm:hidden flex h-[80%] w-full flex-col items-center justify-center text-2xl gap-y-5">
+          <NavItems items={navItems}  phoneNavOpen = {phoneNavOpen} setPhoneNavOpen={setPhoneNavOpen}/>
+        </ul>
+        <div className="space-x-5 flex justify-center">
+          {socials.map((social: Social, index: number) => (
+            <Link
+              href={social.link}
+              target="_blank"
+              key={"icon" + index + 1}
+              className="text-xl hover:text-pink">
+              {social.icon}
+            </Link>
+          ))}
+        </div>
+      </motion.div>
+    </nav>
   );
 }
 

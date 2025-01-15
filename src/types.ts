@@ -7,5 +7,4 @@ export type Social = {
 export type NavigationItem = {
     name : string,
     link : string,
-    color :string | undefined
 }

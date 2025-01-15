@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body { 
+    overflow-x: hidden;
+}
+
+.swiper{
+    overflow-x: clip !important;
+}
+
+.swiper-button-disabled{
+    opacity: 50%;
+}
