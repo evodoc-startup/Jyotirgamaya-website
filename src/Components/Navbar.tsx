@@ -11,6 +11,7 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import type { Social, NavigationItem } from "@/types";
 import NavItems from "./NavItems";
 import { motion } from "motion/react";
+import Image from "next/image";
 
 function Navbar() {
   const [phoneNavOpen, setPhoneNavOpen] = useState(false);
@@ -64,7 +65,7 @@ function Navbar() {
     <nav className={`bg-white py-2 flex justify-center sticky top-0 z-50 w-screen`}>
       <div className="flex md:justify-around justify-between px-6 w-full items-center cursor-pointer text-nowrap">
         <Link href={"/"}>
-          <img src="logo.png" alt="Logo" className="h-20 w-auto aspect-auto" />
+          <Image src="logo.png" height={200} width={200} alt="Logo" className="h-20 w-auto aspect-auto" />
         </Link>
         <ul className="sm:flex hidden w-fit md:space-x-10 space-x-4 md:justify-normal justify-end text-base">
           <NavItems items={navItems} phoneNavOpen = {phoneNavOpen} setPhoneNavOpen={setPhoneNavOpen}/>
