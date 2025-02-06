@@ -28,7 +28,7 @@ function Why() {
 
   return (
     <section className="px-10 md:px-40 py-20">
-        <h1 className="text-4xl text-center">Why Choose Us</h1>
+      <h1 className="text-4xl text-center">Why Choose Us</h1>
       <div
         className="w-full h-fit py-20 flex sm:flex-row flex-col justify-around  
     gap-10 flex-wrap">

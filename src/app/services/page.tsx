@@ -1,14 +1,14 @@
 import React from "react";
 import Main from "./components/Main";
-import Story from "./components/Story";
-import Why from "./components/Why";
+import How from "./components/How";
+import Services from "./components/Services";
 
 function page() {
   return (
     <>
       <Main />
-      <Story />
-      <Why />
+      <How />
+      <Services />
     </>
   );
 }
