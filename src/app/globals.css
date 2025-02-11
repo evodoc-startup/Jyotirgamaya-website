@@ -2,18 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-body { 
+body {
     overflow-x: hidden;
 }
 
-.swiper{
+.swiper {
     overflow-x: clip !important;
 }
 
-.swiper-button-disabled{
+.swiper-button-disabled {
     opacity: 50%;
 }
 
-.fancy-border{
-    border-radius: 70% 30% 70% 30% / 59% 56% 44% 41% ;
+.fancy-border {
+    border-radius: 70% 30% 70% 30% / 59% 56% 44% 41%;
 }
