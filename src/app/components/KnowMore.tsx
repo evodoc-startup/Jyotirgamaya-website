@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence, useScroll, useSpring } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 function KnowMore() {
   const cards = [
@@ -30,71 +30,69 @@ function KnowMore() {
   ];
 
   const containerVariants = {
-    hidden: {
-      opacity: 0,
-    },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.4, // Delay between each card
-      },
+      transition: { staggerChildren: 0.4 },
     },
   };
 
   const cardVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50,
-    },
+    hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.8, ease: "easeOut" },
     },
   };
-  
 
   return (
     <div className="w-full h-fit bg-[#76E1FF] relative bg-opacity-[68%]">
       <div className='absolute w-full h-full bg-[url("/knowmorebg.png")] bg-cover bg-no-repeat -z-10'></div>
-      <motion.div className="h-44 w-44 bg-[#007EB5] absolute top-3 -left-36" whileInView={{rotate: 45, transition : {
-        duration: 1
-      }}}></motion.div>
-      <div className="w-full h-fit pt-12 pb-44 lg:px-44 md:px-24 px-5">
+      <motion.div
+        className="h-44 w-44 bg-[#007EB5] absolute top-3 -left-36"
+        whileInView={{
+          rotate: 45,
+          transition: { duration: 1 },
+        }}
+      />
+      <div className="w-full h-fit pt-12 pb-44 px-5">
         <h1 className="mt-8 text-4xl text-center font-semibold tracking-wider">
           Know More <span className="uppercase text-blue">About Us</span>
         </h1>
         <div className="w-80 bg-white h-[2px] mx-auto mt-3"></div>
-        <motion.div className="w-full h-fit mt-10 flex items-center lg:justify-between justify-center flex-wrap gap-y-8 lg:gap-x-0 gap-x-8"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
+        <motion.div
+          className="w-full h-fit mt-10 flex flex-wrap justify-center gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
         >
           <AnimatePresence>
             {cards.map((item, index) => (
               <motion.div
                 key={"knowCard" + index}
-                className={`h-80 w-80 aspect-square overflow-hidden relative shadow-2xl`}
+                className="relative w-72 xl:w-96 aspect-square overflow-hidden shadow-2xl group"
                 variants={cardVariants}
-                >
+              >
                 <Image
                   src={item.image}
-                  alt={"knowCardImg"}
-                  height={500}
-                  width={500}
-                  className="w-full h-full"
+                  alt="knowCardImg"
+                  fill
+                  className="object-cover"
                 />
+                {/* Always Visible Title */}
+                <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-90 p-4">
+                  <p className="text-xl font-semibold">{item.title}</p>
+                </div>
+                {/* Sliding Overlay */}
                 <motion.div
-                  className="h-full w-full px-8 py-4  text-center bg-white absolute top-0 rounded-tl-md rounded-tr-md bg-opacity-90 translate-y-[260px] hover:translate-y-0 duration-300 hover:rounded-none transition"
-                  >
-                  <p className="text-xl mb-3">{item.title}</p>
-                  <p className="text-center mb-6">{item.description}</p>
+                  className="absolute bottom-0 left-0 w-full bg-white bg-opacity-90 px-8 py-4 transform translate-y-full group-hover:translate-y-0 transition duration-300"
+                >
+                  <p className="mb-6">{item.description}</p>
                   <Link
                     href={item.link}
-                    className="bg-[#79CFFA] px-3 py-2 rounded-md">
+                    className="bg-[#79CFFA] px-3 py-2 rounded-md inline-block"
+                  >
                     Know More
                   </Link>
                 </motion.div>

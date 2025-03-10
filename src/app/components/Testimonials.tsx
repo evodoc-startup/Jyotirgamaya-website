@@ -3,8 +3,8 @@ import Slider from "./TestimonialSlider";
 
 function Testimonials() {
   return (
-    <section className="py-5 w-screen relative top-[-30px] overflow-hidden">
-      <div className="flex items-center w-full font-sans font-bold flex-col px-10">
+    <section className="w-screen relative top-[-30px] overflow-hidden">
+      <div className="flex items-center w-full font-bold flex-col px-10">
         <h1 className="text-center sm:text-[2.8rem] text-4xl leading-[1.2] text-[#424949]">
           <span className="uppercase text-[#f1c40f] tracking-wider">
             Testimonial

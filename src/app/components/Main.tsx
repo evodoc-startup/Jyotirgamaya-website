@@ -53,7 +53,7 @@ export default function Main() {
         />
       </motion.div>
       <motion.div
-        className="md:w-1/2 w-full h-full sm:opacity-0 opacity-100 z-10 relative flex justify-center items-center"
+        className="md:w-1/2 md:ml-10 w-full h-full sm:opacity-0 opacity-100 z-10 relative flex justify-center items-center"
         key={"div" + slide}
         animate={{ opacity: 100, transition: { duration: 1, ease: "easeIn" } }}>
         <div
@@ -67,15 +67,17 @@ export default function Main() {
           <p className="sm:text-lg text-base">{slides[slide].para}</p>
         </div>
       </motion.div>
+      <div className="absolute bottom-2 flex gap-6 w-full justify-center">
       <div
-        className={`absolute left-0 top-[40%] sm:bg-${slides[slide].color} px-2 py-5 text-white cursor-pointer z-20`}
+        className={`w-fit sm:bg-${slides[slide].color} p-3 text-white cursor-pointer z-20 rounded-full`}
         onClick={() => setSlide(slide - 1 < 0 ? slides.length - 1 : slide - 1)}>
-        <FaChevronLeft className="sm:text-2xl" />
+        <FaChevronLeft className="sm:text-xl" />
       </div>
       <div
-        className={`absolute right-0 top-[40%] sm:bg-${slides[slide].color} px-2 py-5 text-white cursor-pointer z-20`}
+        className={`w-fit sm:bg-${slides[slide].color} p-3 text-white cursor-pointer z-20 rounded-full`}
         onClick={() => setSlide(slide + 1 > slides.length - 1 ? 0 : slide + 1)}>
-        <FaChevronRight className="sm:text-2xl" />
+        <FaChevronRight className="sm:text-xl" />
+      </div>
       </div>
     </motion.main>
   );

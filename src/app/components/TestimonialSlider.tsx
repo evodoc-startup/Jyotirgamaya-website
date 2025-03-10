@@ -115,7 +115,7 @@ export default function Slider() {
                 )}
               </div>
               <div className="mt-5 bg-[#E6E3E3] p-10 -translate-y-16">
-                <p className="text-xs font-sans tracking-widest leading-relaxed relative mt-6">
+                <p className="text-xs tracking-widest leading-relaxed relative mt-6">
                   <span className="text-5xl text-gold absolute -top-5 -left-5 sm:inline hidden">
                     "
                   </span>

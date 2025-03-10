@@ -68,7 +68,7 @@ function Navbar() {
           <Image src="/Logo.png" height={200} width={200} alt="Logo" className="h-20 w-auto aspect-auto" />
         </Link>
         <ul className="sm:flex hidden w-fit md:space-x-10 space-x-4 md:justify-normal justify-end text-base">
-          <NavItems items={navItems} phoneNavOpen = {phoneNavOpen} setPhoneNavOpen={setPhoneNavOpen}/>
+          <NavItems items={navItems} phoneNavOpen={phoneNavOpen} setPhoneNavOpen={setPhoneNavOpen} />
         </ul>
         <div className="hidden space-x-5 lg:flex">
           {socials.map((social: Social, index: number) => (
@@ -76,7 +76,7 @@ function Navbar() {
               href={social.link}
               target="_blank"
               key={"icon" + index + 1}
-              className="text-xl hover:text-pink">
+              className="text-xl hover:text-blue">
               {social.icon}
             </Link>
           ))}
@@ -97,16 +97,16 @@ function Navbar() {
         </motion.span>
       </div>
       <motion.div className="sm:hidden fixed top-0 left-[-1000px] h-full w-full bg-white"
-      animate={{
-        left: phoneNavOpen ? 0 : -1000,
-        transition : {
-          duration : 0.6,
-          type: "tween"
-        }
-      }}
+        animate={{
+          left: phoneNavOpen ? 0 : -1000,
+          transition: {
+            duration: 0.6,
+            type: "tween"
+          }
+        }}
       >
         <ul className="sm:hidden flex h-[80%] w-full flex-col items-center justify-center text-2xl gap-y-5">
-          <NavItems items={navItems}  phoneNavOpen = {phoneNavOpen} setPhoneNavOpen={setPhoneNavOpen}/>
+          <NavItems items={navItems} phoneNavOpen={phoneNavOpen} setPhoneNavOpen={setPhoneNavOpen} />
         </ul>
         <div className="space-x-5 flex justify-center">
           {socials.map((social: Social, index: number) => (
@@ -114,7 +114,7 @@ function Navbar() {
               href={social.link}
               target="_blank"
               key={"icon" + index + 1}
-              className="text-xl hover:text-pink">
+              className="text-xl hover:text-blue">
               {social.icon}
             </Link>
           ))}

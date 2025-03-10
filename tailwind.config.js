@@ -21,7 +21,7 @@ module.exports = {
         },
     },
   },
-  safelist : ["bg-white", "bg-indigo", "bg-moonstone", "bg-mint", "bg-pink", "bg-gold", "bg-purple", "bg-orange","bg-blue","text-white", "text-indigo", "text-moonstone", "text-mint",  "text-pink", "text-gold", "text-purple", "text-orange", "text-blue", "hover:bg-white", "hover:bg-blue", "hover:bg-gold", "hover:bg-pink", "hover:bg-moonstone", "border-blue", "border-pink", "border-gold", "border-moonstone", "sm:bg-orange", "sm:bg-blue", "sm:bg-pink"],
+  safelist : ["bg-white", "bg-indigo", "bg-moonstone", "bg-mint", "bg-pink", "bg-gold", "bg-purple", "bg-orange","bg-blue","text-white", "text-indigo", "text-moonstone", "text-mint",  "text-pink", "text-gold", "text-purple", "text-orange", "text-blue", "hover:bg-white", "hover:bg-blue", "hover:bg-gold", "hover:bg-pink", "hover:bg-orange","hover:bg-moonstone", "border-blue", "border-pink", "border-gold", "border-moonstone", "border-orange","sm:bg-orange", "sm:bg-blue", "sm:bg-pink"],
   plugins: [],
 }
 

@@ -27,7 +27,7 @@ function SecondSection() {
   ];
 
   return (
-    <section className="w-full h-fit py-20 flex sm:flex-row flex-col justify-around px-10 md:px-40 
+    <section className="w-full h-fit py-20 flex sm:flex-row flex-col justify-around px-10 md:px-03 
     gap-y-10 flex-wrap">
       <AnimatePresence>
         {circularElements.map((item, index) => (

@@ -1,122 +1,80 @@
+"use client";
 import React from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "motion/react";
 
 function How() {
+  const steps = [
+    {
+      icon: "/goal.svg",
+      title: "Setting Your Goals",
+      description: "Define your objectives to create a focused plan.",
+      color: "blue",
+    },
+    {
+      icon: "/search.svg",
+      title: "Exploring Your Potential",
+      description: "Uncover the opportunities and strengths within you.",
+      color: "pink",
+    },
+    {
+      icon: "/understand.svg",
+      title: "Understanding Your Profile",
+      description: "Gain insights into your unique qualities and preferences.",
+      color: "orange",
+    },
+    {
+      icon: "/find.svg",
+      title: "Discovering Your Options",
+      description: "Explore various strategies and paths available to you.",
+      color: "moonstone",
+    },
+    {
+      icon: "/success.svg",
+      title: "Your Path to Success",
+      description: "Follow a tailored roadmap to achieve your goals.",
+      color: "gold",
+    },
+  ];
+
   return (
-    <section className="flex xl:px-16 px-8 py-10 flex-col w-screen items-center">
-      <div className="text-3xl font-semibold tracking-wider">How It Works?</div>
-      <div className="h-[1px] bg-black sm:w-[10vw] w-full mt-5"></div>
-      <div className="grid lg:grid-cols-9 grid-cols-1 lg:grid-rows-1 sm:gap-y-5 gap-y-2  w-full my-5 text-sm text-center break-words lg:p-0 sm:px-44 px-5">
-        <div className="w-full h-fit p-5">
-          <div className="w-full flex items-center lg:flex-col flex-row">
-            <div className="h-auto lg:w-full w-56 aspect-square rounded-full border-2 xl:p-5 p-3 object-contain border-blue hover:bg-blue hover:invert transition duration-300"
+    <section className="w-full h-fit pt-14 pb-10 flex flex-col items-center gap-y-5">
+      <h2 className="text-3xl font-semibold tracking-wider mb-10">
+        How It Works?
+      </h2>
+      <AnimatePresence>
+        <div className="w-full flex flex-wrap justify-center items-center gap-10 px-10 md:px-3">
+          {steps.map((step, index) => (
+            <motion.div
+              key={`step-${index}`}
+              className="flex flex-col w-56 items-center justify-center text-center"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1, transition: { duration: 2 } }}
+              viewport={{ once: true }}
             >
-              <Image
-                src={"/goal.svg"}
-                height={400}
-                width={400}
-                alt={"Icon"}
-                className="h-full w-full"
-              />
-            </div>
-            <div className="w-full text-center mt-2">
-              <p className="lg:text-base sm:text-2xl ml-5 text-lg">Setting Your Goals</p>
-            </div>
-          </div>
+              <div
+                className={`rounded-full hover:bg-${step.color} border-2 border-${step.color} transition-all duration-200 object-contain ease-in`}
+              >
+                <Image
+                  src={step.icon}
+                  alt={step.title}
+                  height={100}
+                  width={100}
+                  className="h-32 w-32 p-6 filter hover:invert"
+                />
+              </div>
+              <div
+                className={`mt-8 w-full flex items-center justify-center tracking-wide text-center font-semibold bg-${step.color} px-3 py-2 text-white uppercase h-16`}
+              >
+                {step.title}
+              </div>
+              <p className="mt-2 w-full text-sm leading-relaxed text-center h-16 flex items-center justify-center">
+                {step.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
-        <div className="lg:flex hidden w-full px-4 h-full items-center">
-          <div className="h-[1px] w-full bg-black"></div>
-        </div>
-        <div className="lg:hidden flex w-full px-4 sm:h-64 h-44 items-center">
-          <div className="sm:ml-20 ml-16 w-[1px] h-full bg-black"></div>
-        </div>
-        <div className="w-full h-fit p-5">
-          <div className="w-full flex items-center lg:flex-col flex-row">
-            <div className="h-auto flex justify-center items-center lg:w-full w-56 aspect-square rounded-full border-2 xl:p-5 p-3 object-contain border-pink hover:bg-pink hover:invert transition duration-300"
-            >
-              <Image
-                src={"/search.svg"}
-                height={400}
-                width={400}
-                alt={"Icon"}
-                className="h-[80%] w-full"
-              />
-            </div>
-            <div className="w-full text-center mt-2">
-              <p className="lg:text-base sm:text-2xl ml-5 text-lg">Exploring Your Potential</p>
-            </div>
-          </div>
-        </div>
-        <div className="lg:flex hidden w-full px-4 h-full items-center">
-          <div className="h-[1px] w-full bg-black"></div>
-        </div>
-        <div className="lg:hidden flex w-full px-4 sm:h-64 h-44 items-center">
-          <div className="sm:ml-20 ml-16 w-[1px] h-full bg-black"></div>
-        </div>
-        <div className="w-full h-fit p-5">
-          <div className="w-full flex items-center lg:flex-col flex-row">
-            <div className="h-auto flex justify-center items-center lg:w-full w-56 aspect-square rounded-full border-2 xl:p-5 p-3 object-contain border-green-600 hover:bg-green-600 hover:invert transition duration-300"
-            >
-              <Image
-                src={"/understand.svg"}
-                height={400}
-                width={400}
-                alt={"Icon"}
-                className="h-[80%] w-full"
-              />
-            </div>
-            <div className="w-full text-center mt-2">
-              <p className="lg:text-base sm:text-2xl ml-5 text-lg">Understanding Your Profile</p>
-            </div>
-          </div>
-        </div>
-        <div className="lg:flex hidden w-full px-4 h-full items-center">
-          <div className="h-[1px] w-full bg-black"></div>
-        </div>
-        <div className="lg:hidden flex w-full px-4 sm:h-64 h-44 items-center">
-          <div className="sm:ml-20 ml-16 w-[1px] h-full bg-black"></div>
-        </div>
-        <div className="w-full h-fit p-5">
-          <div className="w-full flex items-center lg:flex-col flex-row">
-            <div className="h-auto flex justify-center items-center lg:w-full w-56 aspect-square rounded-full border-2 xl:p-5 p-3 object-contain border-moonstone hover:bg-moonstone hover:invert transition duration-300"
-            >
-              <Image
-                src={"/find.svg"}
-                height={400}
-                width={400}
-                alt={"Icon"}
-                className="h-[80%] w-full"
-              />
-            </div>
-            <div className="w-full text-center mt-2">
-              <p className="lg:text-base sm:text-2xl ml-5 text-lg">Discovering Your Options</p>
-            </div>
-          </div>
-        </div>
-        <div className="lg:flex hidden w-full px-4 h-full items-center">
-          <div className="h-[1px] w-full bg-black"></div>
-        </div>
-        <div className="lg:hidden flex w-full px-4 sm:h-64 h-44 items-center">
-          <div className="sm:ml-20 ml-16 w-[1px] h-full bg-black"></div>
-        </div>
-        <div className="w-full h-fit p-5">
-          <div className="w-full flex items-center lg:flex-col flex-row">
-            <div className="h-auto flex justify-center items-center lg:w-full w-56 aspect-square rounded-full border-2 xl:p-5 p-3 object-contain border-gold hover:bg-gold hover:invert transition duration-300"
-            >
-              <Image
-                src={"/success.svg"}
-                height={400}
-                width={400}
-                alt={"Icon"}
-                className="h-[80%] w-full"
-              />
-            </div>
-            <div className="w-full text-center mt-2">
-              <p className="lg:text-base sm:text-2xl ml-5">Your Path to Success</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      </AnimatePresence>
     </section>
   );
 }

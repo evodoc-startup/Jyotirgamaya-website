@@ -6,14 +6,14 @@ import Link from "next/link";
 function Services() {
   return (
 
-    <motion.div className="md:w-[65vw] w-screen bg-[#FF4362] px-12 py-8 h-fit sm:mx-auto flex font-snas relative top-[-50px] opacity-0 justify-between sm:gap-x-10 gap-y-8 sm:flex-row flex-col"
-    whileInView={{
+    <motion.div className="md:w-[65vw] w-screen bg-blue px-12 py-8 h-fit sm:mx-auto flex font-snas relative top-[-50px] opacity-0 justify-between sm:gap-x-10 gap-y-8 sm:flex-row flex-col"
+      whileInView={{
         opacity: 1,
         y: -45,
         transition: {
-            duration: 1
+          duration: 1
         }
-    }}
+      }}
     >
       <div className="w-fit text-white tracking-wide gap-y-5 flex flex-col">
         <p className="lg:text-3xl md:text-2xl text-xl font-bold tracking-normal">
