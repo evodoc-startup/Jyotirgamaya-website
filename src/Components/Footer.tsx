@@ -44,7 +44,7 @@ function Footer () {
         {/* Logo Section */}
         <div className='w-full sm:w-2/5 flex items-center'>
           <Image
-            src='/Logo.png'
+            src='/logo-2.png'
             alt='Logo'
             height={400}
             width={400}
