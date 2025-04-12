@@ -224,7 +224,7 @@ function Services () {
                 </>
               )}
               <Link
-                href='/'
+                href='https://docs.google.com/forms/d/e/1FAIpQLScqCcLemkkaBaA8EBDAy7UHY17kbHym7t4Eerm-004STiN1gw/viewform?usp=header'
                 className='py-2 px-4 my-4 bg-[#FF9B28] text-white w-fit'
               >
                 Explore Now

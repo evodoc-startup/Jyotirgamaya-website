@@ -159,15 +159,18 @@ function Footer () {
             <li className='flex items-center space-x-2'>
               <MdEmail />
               <span>Email:</span>
-              <a href='mailto:info@yourcompany.com' className='hover:underline'>
-                info@yourcompany.com
+              <a
+                href='mailto:contact@jyotirgamya.com'
+                className='hover:underline'
+              >
+                contact@jyotirgamya.com
               </a>
             </li>
             <li className='flex items-center space-x-2'>
               <MdAddCall />
               <span>Phone:</span>
-              <a href='tel:+1234567890' className='hover:underline'>
-                +123 456 7890
+              <a href='tel:+918949694018' className='hover:underline'>
+                +91 89496 94018
               </a>
             </li>
           </ul>
