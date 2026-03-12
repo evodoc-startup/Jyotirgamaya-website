@@ -207,29 +207,6 @@ export default function App() {
           })}
         </div>
 
-        {/* CTA */}
-        <div style={{
-          marginTop: 44,
-          opacity: shown.includes(4) ? 1 : 0,
-          transition: "opacity 0.8s ease 1.2s",
-        }}>
-          <button style={{
-            background: "linear-gradient(135deg, #8DC63F, #6a9e28)",
-            color: "#fff",
-            border: "none",
-            borderRadius: 32,
-            padding: "13px 36px",
-            fontSize: 13,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            cursor: "pointer",
-            fontFamily: "Georgia, serif",
-            boxShadow: "0 4px 20px rgba(141,198,63,0.4)",
-          }}>
-            Begin Assessment →
-          </button>
-        </div>
-
         <style>{`
           @keyframes pulse { 0%,100% { transform: translate(-50%,-50%) scale(1); opacity:0.3; } 50% { transform: translate(-50%,-50%) scale(1.45); opacity:0.08; } }
         `}</style>
