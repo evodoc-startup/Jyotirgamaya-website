@@ -8,7 +8,7 @@ const steps = [
     shadow: "rgba(245,197,24,0.4)",
     glow: "rgba(245,197,24,0.15)",
     side: "right",
-    num: "01",
+    num: "1",
     title: "Personality Profiling",
     desc: "Uncovers how you think, behave, and make decisions – forming the emotional backbone of your career path.",
   },
@@ -18,7 +18,7 @@ const steps = [
     shadow: "rgba(141,198,63,0.4)",
     glow: "rgba(141,198,63,0.12)",
     side: "left",
-    num: "02",
+    num: "2",
     title: "Aptitude Analysis",
     desc: "Measures your core abilities to reveal what you are naturally built to excel at.",
   },
@@ -28,7 +28,7 @@ const steps = [
     shadow: "rgba(61,191,184,0.4)",
     glow: "rgba(61,191,184,0.12)",
     side: "right",
-    num: "03",
+    num: "3",
     title: "Emotional Intelligence",
     desc: "Evaluates your capacity to understand and manage emotions for stronger interpersonal fit.",
   },
@@ -38,7 +38,7 @@ const steps = [
     shadow: "rgba(33,118,174,0.4)",
     glow: "rgba(33,118,174,0.12)",
     side: "left",
-    num: "04",
+    num: "4",
     title: "Psychomotor Skills",
     desc: "Assesses coordination and response to align you with careers fitting your physical and mental synergy.",
   },
@@ -48,7 +48,7 @@ const steps = [
     shadow: "rgba(106,31,194,0.4)",
     glow: "rgba(106,31,194,0.12)",
     side: "right",
-    num: "05",
+    num: "5",
     title: "Interest Mapping",
     desc: "Identifies what truly engages and motivates you, ensuring long-term career satisfaction.",
   },
@@ -169,10 +169,10 @@ export default function App() {
                     alignItems: "center",
                     justifyContent: "center",
                     boxShadow: `0 0 18px ${s.shadow}, 0 3px 10px rgba(30,60,100,0.2)`,
-                    fontSize: 12,
-                    fontWeight: "bold",
+                    fontSize: 16,
+                    fontWeight: "600",
+                    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                     color: "#fff",
-                    letterSpacing: "0.05em",
                     flexShrink: 0,
                   }}>
                     {s.num}
@@ -190,14 +190,9 @@ export default function App() {
                   padding: "16px 20px",
                   boxShadow: `0 4px 20px rgba(30,60,100,0.1), 0 1px 4px rgba(30,60,100,0.06), inset 0 0 30px ${s.glow}`,
                 }}>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 6 }}>
-                    <span style={{ color: s.color, fontSize: 10, letterSpacing: "0.18em", fontWeight: "bold" }}>
-                      {s.num}
-                    </span>
-                    <h3 style={{ color: "#1a2535", fontSize: 14, fontWeight: "bold", margin: 0, lineHeight: 1.3 }}>
-                      {s.title}
-                    </h3>
-                  </div>
+                  <h3 style={{ color: "#1a2535", fontSize: 14, fontWeight: "bold", margin: "0 0 6px 0", lineHeight: 1.3 }}>
+                    {s.title}
+                  </h3>
                   <p style={{ color: "#4a5e78", fontSize: 12, lineHeight: 1.65, margin: 0 }}>
                     {s.desc}
                   </p>
@@ -205,29 +200,6 @@ export default function App() {
               </div>
             );
           })}
-        </div>
-
-        {/* CTA */}
-        <div style={{
-          marginTop: 44,
-          opacity: shown.includes(4) ? 1 : 0,
-          transition: "opacity 0.8s ease 1.2s",
-        }}>
-          <button style={{
-            background: "linear-gradient(135deg, #8DC63F, #6a9e28)",
-            color: "#fff",
-            border: "none",
-            borderRadius: 32,
-            padding: "13px 36px",
-            fontSize: 13,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            cursor: "pointer",
-            fontFamily: "Georgia, serif",
-            boxShadow: "0 4px 20px rgba(141,198,63,0.4)",
-          }}>
-            Begin Assessment →
-          </button>
         </div>
 
         <style>{`
@@ -339,14 +311,9 @@ export default function App() {
                       boxShadow: `0 4px 24px rgba(30,60,100,0.1), 0 1px 4px rgba(30,60,100,0.06), inset 0 0 40px ${s.glow}`,
                     }}
                   >
-                    <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 8 }}>
-                      <span style={{ color: s.color, fontSize: 11, letterSpacing: "0.2em", fontWeight: "bold" }}>
-                        {s.num}
-                      </span>
-                      <h3 style={{ color: "#1a2535", fontSize: 16, fontWeight: "bold", margin: 0, lineHeight: 1.3 }}>
-                        {s.title}
-                      </h3>
-                    </div>
+                    <h3 style={{ color: "#1a2535", fontSize: 16, fontWeight: "bold", margin: "0 0 8px 0", lineHeight: 1.3 }}>
+                      {s.title}
+                    </h3>
                     <p style={{ color: "#4a5e78", fontSize: 13, lineHeight: 1.7, margin: 0 }}>
                       {s.desc}
                     </p>
@@ -362,7 +329,7 @@ export default function App() {
                   position: "absolute",
                   top: "50%", left: "50%",
                   transform: "translate(-50%, -50%)",
-                  width: 68, height: 68,
+                  width: 90, height: 90,
                   borderRadius: "50%",
                   border: `1px solid ${s.color}`,
                   opacity: 0.35,
@@ -370,18 +337,18 @@ export default function App() {
                 }} />
                 <div
                   style={{
-                    width: 46,
-                    height: 46,
+                    width: 64,
+                    height: 64,
                     borderRadius: "50%",
                     background: `linear-gradient(135deg, ${s.color}, ${s.colorDark})`,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     boxShadow: `0 0 20px ${s.shadow}, 0 4px 12px rgba(30,60,100,0.2)`,
-                    fontSize: 13,
-                    fontWeight: "bold",
+                    fontSize: 26,
+                    fontWeight: "600",
+                    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                     color: "#fff",
-                    letterSpacing: "0.05em",
                   }}
                 >
                   {s.num}
@@ -404,14 +371,9 @@ export default function App() {
                       boxShadow: `0 4px 24px rgba(30,60,100,0.1), 0 1px 4px rgba(30,60,100,0.06), inset 0 0 40px ${s.glow}`,
                     }}
                   >
-                    <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 8 }}>
-                      <span style={{ color: s.color, fontSize: 11, letterSpacing: "0.2em", fontWeight: "bold" }}>
-                        {s.num}
-                      </span>
-                      <h3 style={{ color: "#1a2535", fontSize: 16, fontWeight: "bold", margin: 0, lineHeight: 1.3 }}>
-                        {s.title}
-                      </h3>
-                    </div>
+                    <h3 style={{ color: "#1a2535", fontSize: 16, fontWeight: "bold", margin: "0 0 8px 0", lineHeight: 1.3 }}>
+                      {s.title}
+                    </h3>
                     <p style={{ color: "#4a5e78", fontSize: 13, lineHeight: 1.7, margin: 0 }}>
                       {s.desc}
                     </p>
