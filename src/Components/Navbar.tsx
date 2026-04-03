@@ -36,6 +36,10 @@ function Navbar() {
       name: "About Us",
       link: "/about-us",
     },
+    {
+      name: "Career Counselling",
+      link: "/career-counselling",
+    },
   ];
 
   const socials: Social[] = [
