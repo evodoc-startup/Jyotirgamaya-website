@@ -25,6 +25,10 @@ function Navbar() {
       link: "/autism-care-center",
     },
     {
+      name: "Career Counselling",
+      link: "/career-counselling",
+    },
+    {
       name: "Services",
       link: "/services",
     },
@@ -35,10 +39,6 @@ function Navbar() {
     {
       name: "About Us",
       link: "/about-us",
-    },
-    {
-      name: "Career Counselling",
-      link: "/career-counselling",
     },
   ];
 
