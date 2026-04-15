@@ -56,29 +56,30 @@ function Navbar() {
     { name: "WhatsApp", icon: <FaWhatsapp />, link: "www.whatsapp.com" },
   ];
 
+  // Update the return statement with enriched transitions
   return (
-    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ease-in-out transform ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'} ${scrolled ? 'py-4' : 'py-8'}`}>
-      <div className={`mx-auto max-w-7xl px-6 rounded-full transition-all duration-700 ${scrolled ? 'bg-white/70 backdrop-blur-2xl shadow-premium py-3 border border-white/20' : 'bg-transparent py-4'}`}>
-        <div className="flex justify-between items-center cursor-pointer">
+    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] transform ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'} ${scrolled ? 'py-2' : 'py-6'}`}>
+      <div className={`mx-auto max-w-[95%] xl:max-w-7xl px-8 rounded-full transition-all duration-1000 ${scrolled ? 'bg-white/90 backdrop-blur-xl shadow-premium py-3 border border-gray-100' : 'bg-white py-6 shadow-sm shadow-black/5'}`}>
+        <div className="flex justify-between items-center">
           <Link href={"/"} className="transition-transform duration-500 hover:scale-105 active:scale-95 group">
             <Image 
               src="/Logo.png" 
-              height={200} 
-              width={200} 
+              height={300} 
+              width={300} 
               alt="Logo" 
-              className="h-10 md:h-12 w-auto aspect-auto transition-all duration-500 group-hover:brightness-110 mix-blend-multiply" 
+              className="h-12 md:h-14 w-auto drop-shadow-sm" 
             />
           </Link>
-          <ul className="lg:flex hidden items-center space-x-6 text-sm font-semibold tracking-wider uppercase">
+          <ul className="lg:flex hidden items-center space-x-10 text-[13px] font-semibold tracking-tight">
             <NavItems items={navItems} phoneNavOpen={phoneNavOpen} setPhoneNavOpen={setPhoneNavOpen} />
           </ul>
-          <div className="hidden space-x-8 lg:flex items-center">
+          <div className="hidden space-x-6 lg:flex items-center">
             {socials.map((social: Social, index: number) => (
               <Link
                 href={social.link}
                 target="_blank"
                 key={"icon" + index}
-                className="text-lg text-charcoal/60 hover:text-mint hover:-translate-y-1 transition-all duration-300">
+                className="text-xl text-charcoal/80 hover:text-[#FE3E3E] transition-all duration-300">
                 {social.icon}
               </Link>
             ))}

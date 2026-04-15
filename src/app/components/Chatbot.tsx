@@ -146,7 +146,7 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="fixed bottom-10 right-10 z-[200]">
+    <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[200]">
       {/* Welcome Bubble */}
       <AnimatePresence>
         {showWelcome && !isOpen && (
@@ -154,7 +154,7 @@ export default function Chatbot() {
             initial={{ opacity: 0, x: 20, y: 0 }}
             animate={{ opacity: 1, x: 0, y: -20 }}
             exit={{ opacity: 0, x: 20 }}
-            className="absolute bottom-16 right-0 w-48 bg-white p-4 rounded-2xl shadow-premium border border-indigo/10 z-10 pointer-events-none"
+            className="absolute bottom-16 right-0 w-48 bg-white p-4 rounded-2xl shadow-premium border border-indigo/10 z-10 pointer-events-none hidden md:block"
           >
             <p className="text-xs text-charcoal font-medium leading-relaxed">
               Hey there! 👋 Need any help illuminating your path?
@@ -167,21 +167,21 @@ export default function Chatbot() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20, transformOrigin: "bottom right" }}
+            initial={{ opacity: 0, scale: 0.9, y: 50, transformOrigin: "bottom right" }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="absolute bottom-20 right-0 w-[350px] md:w-[400px] h-[550px] bg-white/95 backdrop-blur-3xl rounded-[2.5rem] shadow-premium overflow-hidden border border-white/40 flex flex-col"
+            exit={{ opacity: 0, scale: 0.9, y: 50 }}
+            className="absolute bottom-20 right-0 w-[calc(100vw-3rem)] sm:w-[380px] md:w-[400px] h-[70vh] md:h-[550px] max-h-[600px] bg-white/95 backdrop-blur-3xl rounded-[2.5rem] shadow-2xl overflow-hidden border border-white/40 flex flex-col"
           >
             {/* Header */}
-            <div className="bg-charcoal p-6 text-white flex justify-between items-center bg-gradient-to-br from-charcoal to-indigo">
+            <div className="bg-charcoal p-5 md:p-6 text-white flex justify-between items-center bg-gradient-to-br from-charcoal to-indigo shrink-0">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-mint/20 border border-mint/30 flex items-center justify-center text-mint">
                   <FaRobot className="animate-pulse" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg leading-tight">Jyoti Assistant</h3>
-                  <div className="flex items-center gap-1.5 shadow-sm">
-                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                  <h3 className="font-serif text-base md:text-lg leading-tight">Jyoti Assistant</h3>
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                     <p className="text-[10px] text-mint uppercase tracking-widest font-semibold">Active Now</p>
                   </div>
                 </div>
@@ -189,13 +189,14 @@ export default function Chatbot() {
               <button 
                 onClick={() => setIsOpen(false)}
                 className="w-10 h-10 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors"
+                aria-label="Close Chat"
               >
                 <HiXMark className="text-2xl" />
               </button>
             </div>
 
             {/* Messages */}
-            <div className="flex-grow overflow-y-auto p-6 space-y-4 scrollbar-hide">
+            <div className="flex-grow overflow-y-auto p-5 md:p-6 space-y-4 scrollbar-hide">
               {messages.map((msg, i) => (
                 <motion.div
                   key={i}
@@ -233,13 +234,13 @@ export default function Chatbot() {
             </div>
 
             {/* Quick Actions & Input */}
-            <div className="p-4 bg-white/50 border-t border-indigo/5 space-y-4">
+            <div className="p-4 md:p-5 bg-gray-50/50 border-t border-indigo/5 space-y-4 shrink-0">
               <div className="flex flex-wrap gap-2">
                 {CHAT_DATA[currentStep].options.map((opt, i) => (
                   <button
                     key={i}
                     onClick={() => handleOptionClick(opt as any)}
-                    className="px-3 py-1.5 bg-white border border-indigo/10 rounded-full text-[10px] text-charcoal hover:bg-indigo hover:text-white hover:border-indigo transition-all duration-300 transform hover:scale-105"
+                    className="px-3 py-1.5 bg-white border border-indigo/10 rounded-full text-[10px] text-charcoal hover:bg-indigo hover:text-white hover:border-indigo transition-all duration-300 transform active:scale-95"
                   >
                     {opt.label}
                   </button>
@@ -255,20 +256,20 @@ export default function Chatbot() {
                         setMessages(prev => [...prev, { sender: 'bot', text: CHAT_DATA.initial.message }]);
                       }, 1000);
                     }}
-                    className="px-3 py-1.5 bg-mint/30 border border-mint rounded-full text-[10px] text-charcoal hover:bg-mint transition-all"
+                    className="px-3 py-1.5 bg-white border border-[#FE3E3E]/20 rounded-full text-[10px] text-[#FE3E3E] hover:bg-[#FE3E3E] hover:text-white transition-all"
                   >
                     🏠 Main Menu
                   </button>
                 )}
               </div>
               
-              <form onSubmit={handleSendMessage} className="relative group">
+              <form onSubmit={handleSendMessage} className="relative">
                 <input 
                   type="text" 
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="Ask me anything..."
-                  className="w-full bg-gray-50 border-none rounded-2xl px-5 py-3.5 pr-12 text-sm focus:ring-2 focus:ring-mint transition-all"
+                  placeholder="Type a message..."
+                  className="w-full bg-white border border-indigo/10 rounded-2xl px-5 py-3.5 pr-12 text-sm focus:ring-2 focus:ring-mint transition-all shadow-sm"
                 />
                 <button 
                   type="submit"
@@ -282,23 +283,23 @@ export default function Chatbot() {
         )}
       </AnimatePresence>
 
-      {/* Unique Trigger: Floating Magnetic Capsule */}
+      {/* Trigger Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="group relative flex items-center gap-4 bg-charcoal text-white rounded-full p-2 pr-6 shadow-premium transition-all duration-500 hover:shadow-mint/20"
+        className="group relative flex items-center gap-3 md:gap-4 bg-charcoal text-white rounded-full p-2 pr-5 md:pr-6 shadow-2xl transition-all duration-500 hover:shadow-mint/20"
       >
-        <div className="w-12 h-12 rounded-full bg-mint flex items-center justify-center text-charcoal text-2xl group-hover:rotate-12 transition-transform duration-500 relative">
+        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-mint flex items-center justify-center text-charcoal text-xl md:text-2xl transition-transform duration-500 relative">
            {isOpen ? <HiXMark /> : <HiChatBubbleBottomCenterText />}
            {!hasOpened && (
-             <span className="absolute -top-1 -right-1 w-4 h-4 bg-indigo text-[10px] flex items-center justify-center rounded-full border border-white">
+             <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#FE3E3E] text-[10px] flex items-center justify-center rounded-full border border-white">
                1
              </span>
            )}
         </div>
-        <span className="font-semibold text-sm tracking-tight">
-          {isOpen ? "Close Assistant" : "Need help?"}
+        <span className="font-semibold text-xs md:text-sm tracking-tight">
+          {isOpen ? "Hide Chat" : "Need help?"}
         </span>
         <div className="absolute inset-0 rounded-full ring-4 ring-mint/20 animate-ping opacity-0 group-hover:opacity-100" />
       </motion.button>
