@@ -79,17 +79,8 @@ export default function Chatbot() {
       if (!hasOpened && !isOpen) setShowWelcome(true);
     }, 4000);
 
-    const autoOpenTimer = setTimeout(() => {
-      if (!hasOpened && !isOpen) {
-        setIsOpen(true);
-        setShowWelcome(false);
-        setHasOpened(true);
-      }
-    }, 8000);
-
     return () => {
       clearTimeout(welcomeTimer);
-      clearTimeout(autoOpenTimer);
     };
   }, [hasOpened, isOpen]);
 
@@ -170,7 +161,7 @@ export default function Chatbot() {
             initial={{ opacity: 0, scale: 0.9, y: 50, transformOrigin: "bottom right" }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 50 }}
-            className="absolute bottom-20 right-0 w-[calc(100vw-3rem)] sm:w-[380px] md:w-[400px] h-[70vh] md:h-[550px] max-h-[600px] bg-white/95 backdrop-blur-3xl rounded-[2.5rem] shadow-2xl overflow-hidden border border-white/40 flex flex-col"
+            className="absolute bottom-20 right-0 w-[calc(100vw-3rem)] sm:w-[380px] md:w-[400px] h-[70vh] md:h-[550px] max-h-[600px] bg-white md:bg-white/95 md:backdrop-blur-3xl rounded-[2.5rem] shadow-2xl overflow-hidden border border-gray-100 flex flex-col"
           >
             {/* Header */}
             <div className="bg-charcoal p-5 md:p-6 text-white flex justify-between items-center bg-gradient-to-br from-charcoal to-indigo shrink-0">

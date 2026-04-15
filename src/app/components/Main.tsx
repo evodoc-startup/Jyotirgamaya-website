@@ -63,7 +63,7 @@ export default function Main() {
   }, []);
 
   return (
-    <div ref={container} className="w-full h-screen relative overflow-hidden bg-charcoal">
+    <div ref={container} className="w-full h-[100svh] min-h-[600px] relative overflow-hidden bg-charcoal">
       <AnimatePresence>
         <motion.div 
           key={slide}
@@ -84,7 +84,7 @@ export default function Main() {
               src={slides[slide].image}
               alt="hero"
               fill
-              className="object-cover brightness-[0.7]"
+              className="object-cover object-[65%_center] md:object-center brightness-[0.6] transition-all duration-1000"
               priority
             />
           </motion.div>
