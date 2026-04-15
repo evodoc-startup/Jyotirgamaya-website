@@ -15,15 +15,28 @@ import Image from "next/image";
 
 function Navbar() {
   const [phoneNavOpen, setPhoneNavOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      
+      setScrolled(currentScrollY > 20);
+
+      // Hide only when scrolling down past a threshold
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
   const navItems: NavigationItem[] = [
     {
       name: "Home",
@@ -79,7 +92,7 @@ function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ${scrolled ? 'py-4' : 'py-8'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 transform ${isVisible ? 'translate-y-0' : '-translate-y-full shadow-none'} ${scrolled ? 'py-4' : 'py-8'}`}>
       <div className={`mx-auto max-w-7xl px-6 rounded-full transition-all duration-700 ${scrolled ? 'bg-white/70 backdrop-blur-2xl shadow-premium py-3 border border-white/20' : 'bg-transparent py-4'}`}>
         <div className="flex justify-between items-center cursor-pointer">
           <Link href={"/"} className="transition-transform duration-500 hover:scale-105 active:scale-95 group">
