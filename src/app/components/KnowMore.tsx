@@ -47,58 +47,62 @@ function KnowMore() {
   };
 
   return (
-    <div className="w-full h-fit bg-[#76E1FF] relative bg-opacity-[68%]">
-      <div className='absolute w-full h-full bg-[url("/knowmorebg.png")] bg-cover bg-no-repeat -z-10'></div>
-      <motion.div
-        className="h-44 w-44 bg-[#007EB5] absolute top-3 -left-36"
-        whileInView={{
-          rotate: 45,
-          transition: { duration: 1 },
-        }}
-      />
-      <div className="w-full h-fit pt-12 pb-44 px-5">
-        <h1 className="mt-8 text-4xl text-center font-semibold tracking-wider">
-          Know More <span className="uppercase text-blue">About Us</span>
-        </h1>
-        <div className="w-80 bg-white h-[2px] mx-auto mt-3"></div>
+    <div className="w-full h-fit bg-[#f9fafb] relative py-32 overflow-hidden">
+      <div className='absolute inset-0 bg-[url("/knowmorebg.png")] bg-cover bg-fixed opacity-5 -z-10 animate-pulse-slow'></div>
+      
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-20">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-6xl font-serif text-charcoal mb-6"
+          >
+            Discover Our <span className="text-indigo italic">Journey</span>
+          </motion.h2>
+          <div className="w-24 h-1 bg-indigo mx-auto rounded-full" />
+        </div>
+
         <motion.div
-          className="w-full h-fit mt-10 flex flex-wrap justify-center gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
+          viewport={{ once: true }}
         >
-          <AnimatePresence>
-            {cards.map((item, index) => (
-              <motion.div
-                key={"knowCard" + index}
-                className="relative w-72 xl:w-96 aspect-square overflow-hidden shadow-2xl group"
-                variants={cardVariants}
-              >
-                <Image
-                  src={item.image}
-                  alt="knowCardImg"
-                  fill
-                  className="object-cover"
-                />
-                {/* Always Visible Title */}
-                <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-90 p-4">
-                  <p className="text-xl font-semibold">{item.title}</p>
-                </div>
-                {/* Sliding Overlay */}
-                <motion.div
-                  className="absolute bottom-0 left-0 w-full bg-white bg-opacity-90 px-8 py-4 transform translate-y-full group-hover:translate-y-0 transition duration-300"
-                >
-                  <p className="mb-6">{item.description}</p>
+          {cards.map((item, index) => (
+            <motion.div
+              key={"knowCard" + index}
+              className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-premium group cursor-pointer"
+              variants={cardVariants}
+              whileHover={{ y: -15, scale: 1.02 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500" />
+              
+              <div className="absolute inset-0 p-10 flex flex-col justify-end text-white">
+                <h3 className="text-3xl font-serif mb-4 transform transition-transform duration-500 group-hover:-translate-y-4">
+                  {item.title}
+                </h3>
+                <div className="h-0 overflow-hidden group-hover:h-auto transition-all duration-700 opacity-0 group-hover:opacity-100">
+                  <p className="text-white/80 font-light mb-8 leading-relaxed text-sm md:text-base">
+                    {item.description}
+                  </p>
                   <Link
                     href={item.link}
-                    className="bg-[#79CFFA] px-3 py-2 rounded-md inline-block"
+                    className="inline-flex items-center gap-3 text-mint font-semibold uppercase tracking-widest text-xs group/link"
                   >
-                    Know More
+                    Read Story <span className="p-2 rounded-full border border-mint/30 group-hover/link:bg-mint group-hover/link:text-charcoal transition-all">→</span>
                   </Link>
-                </motion.div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </div>

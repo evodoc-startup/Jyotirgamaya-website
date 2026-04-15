@@ -12,16 +12,16 @@ function NavItems({items, phoneNavOpen, setPhoneNavOpen} : {items : NavigationIt
           <Link
             href={item.link}
             className={`${
-              pathname == item.link ? `${"text-pink"}` : "text-black"
-            }`}>
+              pathname == item.link ? "text-indigo" : "text-charcoal/80"
+            } transition-colors duration-300 hover:text-indigo`}>
             {item.name}
           </Link>
           <div
             className={`${
               pathname == item.link
                 ? "scale-100"
-                : "scale-0 group-hover/navItem:scale-100 transition-all duration-500"
-            } w-full bottom-0 h-[2px] ${"bg-pink"}`}></div>
+                : "scale-0 group-hover/navItem:scale-100 transition-all duration-300"
+            } w-full bottom-0 h-[2px] bg-indigo/40 origin-center transition-transform`}></div>
         </li>
         
       ))}

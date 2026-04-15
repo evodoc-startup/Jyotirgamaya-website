@@ -1,21 +1,18 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono, Open_Sans } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 import Navbar from '@/Components/Navbar'
 import Footer from '@/Components/Footer'
+import CustomCursor from './components/CustomCursor'
+import Chatbot from './components/Chatbot'
 import './globals.css'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const inter = Inter({
+  variable: '--font-inter',
   subsets: ['latin']
 })
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin']
-})
-
-const openSans = Open_Sans({
-  variable: '--font-open-sans',
+const playfair = Playfair_Display({
+  variable: '--font-playfair',
   subsets: ['latin']
 })
 
@@ -66,8 +63,10 @@ export default function RootLayout ({
   return (
     <html lang='en'>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${openSans.variable} select-none antialiased overflow-x-hidden`}
+        className={`${inter.variable} ${playfair.variable} font-sans select-none antialiased overflow-x-hidden relative`}
       >
+        <div className="grain-overlay" />
+        <Chatbot />
         <Navbar />
         {children}
         <Footer />

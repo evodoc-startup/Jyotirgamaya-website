@@ -39,159 +39,94 @@ const socials: Social[] = [
 
 function Footer () {
   return (
-    <footer className='w-screen bg-[#192C55]'>
-      <div className='w-full items-start tracking-wide gap-8 py-10 hidden sm:flex sm:px-12 lg:px-28 justify-between font-extralight text-white'>
-        {/* Logo Section */}
-        <div className='w-full sm:w-2/5 flex items-center'>
+    <footer className="w-full bg-charcoal text-white pt-24 pb-12 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-12">
+        {/* Brand Section */}
+        <div className="space-y-8">
           <Image
-            src='/logo-2.png'
-            alt='Logo'
-            height={400}
-            width={400}
-            className='w-40 mr-3'
+            src="/logo-2.png"
+            alt="Logo"
+            height={200}
+            width={200}
+            className="h-12 w-auto brightness-0 invert mix-blend-lighten"
           />
-        </div>
-
-        {/* Quick Links Section */}
-        <div className='w-full sm:w-1/5'>
-          <h3 className='font-li mb-4 text-2xl'>Quick Links</h3>
-          <ul className='space-y-4 text-sm mt-6'>
-            <li>
-              <a href='/about' className='hover:underline'>
-                About Us
+          <p className="text-white/60 font-light leading-relaxed max-w-xs">
+            "Jyotirgamya - Navigating Paths, Illuminating Lives. Empowering every individual to unlock their true potential."
+          </p>
+          <div className="flex gap-5">
+            {socials.map((social, index) => (
+              <a
+                key={index}
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-lg hover:bg-mint hover:text-charcoal hover:border-mint transition-all duration-300"
+              >
+                {social.icon}
               </a>
-            </li>
-            <li>
-              <a href='/services' className='hover:underline'>
-                Services
-              </a>
-            </li>
-            <li>
-              <a href='/contact' className='hover:underline'>
-                Contact
-              </a>
-            </li>
-            <li>
-              <a href='/privacy' className='hover:underline'>
-                Privacy Policy
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Services Section */}
-        <div className='w-full sm:w-1/5'>
-          <h3 className='font-li mb-4 text-2xl'>Our Services</h3>
-          <ul className='space-y-4 text-sm mt-6'>
-            <li>
-              <a href='/services#parent-coaching' className='hover:underline'>
-                Parent Coaching
-              </a>
-            </li>
-            <li>
-              <a href='/services#child-therapy' className='hover:underline'>
-                Child Therapy
-              </a>
-            </li>
-            <li>
-              <a href='/services#family-therapy' className='hover:underline'>
-                Family Therapy
-              </a>
-            </li>
-            <li>
-              <a href='/services#school-counseling' className='hover:underline'>
-                School Counseling
-              </a>
-            </li>
-          </ul>
-          <div className='mt-4'>
-            <a href='/services' className='hover:underline text-sm'>
-              View All
-            </a>
+            ))}
           </div>
         </div>
 
-        {/* Programs Section */}
-        <div className='w-full sm:w-1/5'>
-          <h3 className='font-li mb-4 text-2xl'>Programs</h3>
-          <ul className='space-y-4 text-sm mt-6'>
-            <li>
-              <a href='/programs#individual' className='hover:underline'>
-                Individual Sessions
-              </a>
-            </li>
-            <li>
-              <a href='/programs#group' className='hover:underline'>
-                Group Sessions
-              </a>
-            </li>
-            <li>
-              <a href='/programs#full-day' className='hover:underline'>
-                Full Day Programs
-              </a>
-            </li>
-            <li>
-              <a
-                href='/programs#early-intervention'
-                className='hover:underline'
-              >
-                Early Intervention
-              </a>
-            </li>
-            <li>
-              <a href='/programs#academic' className='hover:underline'>
-                Academic Program
-              </a>
-            </li>
+        {/* Links Column 1 */}
+        <div>
+          <h3 className="font-serif text-xl mb-8 tracking-tight">Quick Links</h3>
+          <ul className="space-y-4 text-white/50 font-light">
+            <li><a href="/about" className="hover:text-mint transition-colors">About Us</a></li>
+            <li><a href="/services" className="hover:text-mint transition-colors">Services</a></li>
+            <li><a href="/contact" className="hover:text-mint transition-colors">Contact</a></li>
+            <li><a href="/privacy" className="hover:text-mint transition-colors">Privacy Policy</a></li>
           </ul>
         </div>
 
-        {/* Contact Info Section */}
-        <div className='w-full sm:w-2/5 tracking-wider font-extralight'>
-          <h3 className='mb-4 text-2xl'>Contact</h3>
-          <div className='my-5 text-lg leading-relaxed'>
-            <p>
-              Jyotirgamya - Navigating Paths, <br />
-              Illuminating Lives
-            </p>
-          </div>
-          <ul className='space-y-2 text-xs'>
-            <li className='flex items-center space-x-2'>
-              <MdEmail />
-              <span>Email:</span>
-              <a
-                href='mailto:contact@jyotirgamya.com'
-                className='hover:underline'
-              >
-                contact@jyotirgamya.com
-              </a>
+        {/* Links Column 2 */}
+        <div>
+          <h3 className="font-serif text-xl mb-8 tracking-tight">Our Services</h3>
+          <ul className="space-y-4 text-white/50 font-light text-sm">
+            <li><a href="/services#parent-coaching" className="hover:text-mint transition-colors">Parent Coaching</a></li>
+            <li><a href="/services#child-therapy" className="hover:text-mint transition-colors">Child Therapy</a></li>
+            <li><a href="/services#family-therapy" className="hover:text-mint transition-colors">Family Therapy</a></li>
+            <li><a href="/services#school-counseling" className="hover:text-mint transition-colors">School Counseling</a></li>
+          </ul>
+        </div>
+
+        {/* Contact info column */}
+        <div className="space-y-8">
+          <h3 className="font-serif text-xl mb-8 tracking-tight">Get in Touch</h3>
+          <ul className="space-y-6">
+            <li className="flex items-start gap-4 group">
+              <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-mint/20 transition-colors">
+                 <MdEmail className="text-xl text-mint" />
+              </div>
+              <div>
+                <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Email Us</p>
+                <a href="mailto:contact@jyotirgamya.com" className="text-white/80 hover:text-white transition-colors">
+                  contact@jyotirgamya.com
+                </a>
+              </div>
             </li>
-            <li className='flex items-center space-x-2'>
-              <MdAddCall />
-              <span>Phone:</span>
-              <a href='tel:+918949694018' className='hover:underline'>
-                +91 89496 94018
-              </a>
+            <li className="flex items-start gap-4 group">
+              <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-mint/20 transition-colors">
+                 <MdAddCall className="text-xl text-mint" />
+              </div>
+              <div>
+                <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Call Us</p>
+                <a href="tel:+918949694018" className="text-white/80 hover:text-white transition-colors">
+                  +91 89496 94018
+                </a>
+              </div>
             </li>
           </ul>
         </div>
       </div>
 
-      {/* Bottom Row */}
-      <div className='w-full flex justify-between items-center text-white py-5 px-10 tracking-wider md:text-base text-xs'>
-        <p>&copy; 2025 Jyotirgamya. All rights reserved</p>
-        <div className='flex items-center space-x-4'>
-          {socials.map((social, index) => (
-            <a
-              key={index}
-              href={social.link}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='hover:text-gray-300'
-            >
-              {social.icon}
-            </a>
-          ))}
+      <div className="max-w-7xl mx-auto px-6 mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-white/40 text-sm font-light">
+        <p>&copy; 2025 Jyotirgamya. All rights reserved.</p>
+        <div className="flex gap-8">
+          <a href="/terms" className="hover:text-white transition-colors">Terms of Service</a>
+          <a href="/cookies" className="hover:text-white transition-colors">Cookie Settings</a>
         </div>
       </div>
     </footer>

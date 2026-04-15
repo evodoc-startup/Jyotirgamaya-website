@@ -52,90 +52,83 @@ export default function Slider() {
   ];
 
   return (
-    <div className="flex gap-5 overflow-x-clip items-center">
-      <button className=" h-fit" id="prevBtn">
-        <FaChevronLeft className="bg-[#99D4FF] sm:text-5xl text-3xl rounded-full p-2" />
+    <div className="flex gap-4 md:gap-8 items-center max-w-7xl mx-auto px-4 md:px-0">
+      <button 
+        className="hidden md:flex flex-shrink-0 w-14 h-14 items-center justify-center rounded-full border border-gray-200 bg-white shadow-soft transition-all duration-300 hover:bg-charcoal hover:text-white hover:scale-110 active:scale-95 z-20" 
+        id="prevBtn"
+      >
+        <FaChevronLeft className="text-xl" />
       </button>
+
       <Swiper
-        slidesPerView={3}
+        slidesPerView={1}
         spaceBetween={30}
+        loop={true}
         navigation={{
           enabled: true,
           nextEl: "#nextBtn",
           prevEl: "#prevBtn",
         }}
         breakpoints={{
-          0: {
-            slidesPerView: 1, // 1 slide for screens <= 640px
-            spaceBetween: 20,
-          },
-          640: {
-            slidesPerView: 1, // 1 slide for screens >= 640px
-            spaceBetween: 20,
-          },
-          900: {
-            slidesPerView: 2, // 1 slide for screens >= 640px
-            spaceBetween: 20,
-          },
-          1200: {
-            slidesPerView: 3, // 3 slides for screens >= 1024px
-            spaceBetween: 40,
-          },
+          640: { slidesPerView: 1 },
+          1024: { slidesPerView: 2 },
+          1280: { slidesPerView: 3 },
         }}
         modules={[Pagination, Navigation]}
-        className="w-full">
+        className="w-full !py-20"
+      >
         {testimonials.map((item, index) => (
-          <SwiperSlide className="" key={"testimonial" + index} style={{height: "100%"}}>
-            <div className="relative flex flex-col items-center -z-10 text-center">
-              <div className="h-20 w-20 rounded-full p-[0.3rem] bg-white top-0  z-10">
-                {item.gender === "M" ? (
-                  <Image
-                    src={"/man.png"}
-                    alt="icon"
-                    width={500}
-                    height={500}
-                    className=""
-                  />
-                ) : item.gender === "F" ? (
-                  <Image
-                    src={"/woman.png"}
-                    alt="icon"
-                    width={500}
-                    height={500}
-                    className=""
-                  />
-                ) : (
-                  <Image
-                    src={"/couple.png"}
-                    alt="icon"
-                    width={500}
-                    height={500}
-                    className=""
-                  />
-                )}
+          <SwiperSlide className="!h-auto" key={"testimonial" + index}>
+            <div className="relative h-full flex flex-col items-center text-center p-8 md:p-10 rounded-[2.5rem] frosted shadow-premium border border-white/40 transition-all duration-500 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] group bg-white/50">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 h-20 w-20 rounded-full p-1 bg-white shadow-lg overflow-hidden border-2 border-mint">
+                <div className="relative w-full h-full rounded-full overflow-hidden">
+                   {item.gender === "M" ? (
+                      <Image src={"/man.png"} alt="avatar" fill className="object-cover p-1" />
+                    ) : item.gender === "F" ? (
+                      <Image src={"/woman.png"} alt="avatar" fill className="object-cover p-1" />
+                    ) : (
+                      <Image src={"/couple.png"} alt="avatar" fill className="object-cover p-1" />
+                    )}
+                </div>
               </div>
-              <div className="mt-5 bg-[#E6E3E3] p-10 -translate-y-16">
-                <p className="text-xs tracking-widest leading-relaxed relative mt-6">
-                  <span className="text-5xl text-gold absolute -top-5 -left-5 sm:inline hidden">
-                    "
-                  </span>
-                  <span className="sm:h-fit max-h-[200px] overflow-hidden block">{item.text}</span>
-                  <span className="text-5xl text-gold absolute -bottom-8 right-0 ml-1 sm:block hidden">
-                    "
-                  </span>
-                  <span className="sm:hidden inline">......</span>
-                </p>
-                <p className="mt-5 text-lg font-bold tracking-wider text-zinc-800">
-                  - {item.writer} -{" "}
-                </p>
+              
+              <div className="mt-8 flex flex-col h-full">
+                <div className="flex-grow">
+                  <span className="text-4xl text-mint/40 font-serif leading-none block mb-2 transition-colors duration-500 group-hover:text-mint/60">"</span>
+                  <p className="text-gray-700 text-sm md:text-base font-light italic leading-relaxed px-2 line-clamp-6">
+                    {item.text}
+                  </p>
+                  <span className="text-4xl text-mint/40 font-serif leading-none block mt-2 text-right transition-colors duration-500 group-hover:text-mint/60">"</span>
+                </div>
+                
+                <div className="mt-8 pt-6 border-t border-gray-100/50">
+                   <p className="text-charcoal font-serif font-bold tracking-tight text-lg">
+                     {item.writer}
+                   </p>
+                   <p className="text-indigo/60 text-[10px] uppercase tracking-[0.2em] mt-1 font-semibold">Verified Client</p>
+                </div>
               </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-      <button className=" h-fit rounded-full" id="nextBtn">
-        <FaChevronRight className="bg-[#99D4FF] sm:text-5xl text-3xl rounded-full p-2" />
+
+      <button 
+        className="hidden md:flex flex-shrink-0 w-14 h-14 items-center justify-center rounded-full border border-gray-200 bg-white shadow-soft transition-all duration-300 hover:bg-charcoal hover:text-white hover:scale-110 active:scale-95 z-20" 
+        id="nextBtn"
+      >
+        <FaChevronRight className="text-xl" />
       </button>
+
+      {/* Mobile Navigation Buttons */}
+      <div className="flex md:hidden absolute bottom-0 left-1/2 -translate-x-1/2 gap-4 z-20">
+         <button id="prevBtnMobile" className="w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-soft border border-gray-100">
+            <FaChevronLeft />
+         </button>
+         <button id="nextBtnMobile" className="w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-soft border border-gray-100">
+            <FaChevronRight />
+         </button>
+      </div>
     </div>
   );
 }
