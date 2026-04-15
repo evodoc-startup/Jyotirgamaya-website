@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { MdEmail, MdAddCall, MdLocationOn } from "react-icons/md";
 
 export default function ContactPage() {
