@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   FaInstagram,
@@ -16,83 +16,48 @@ import Image from "next/image";
 function Navbar() {
   const [phoneNavOpen, setPhoneNavOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
+  const lastScrollY = useRef(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
       setScrolled(currentScrollY > 20);
 
-      // Hide only when scrolling down past a threshold
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      // Robust hide-on-scroll logic
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
       }
 
-      setLastScrollY(currentScrollY);
+      lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
+
   const navItems: NavigationItem[] = [
-    {
-      name: "Home",
-      link: "/",
-    },
-    {
-      name: "Autism Care Center",
-      link: "/autism-care-center",
-    },
-    {
-      name: "Career Counselling",
-      link: "/career-counselling",
-    },
-    {
-      name: "Services",
-      link: "/services",
-    },
-    {
-      name: "Internships",
-      link: "/internships",
-    },
-    {
-      name: "About Us",
-      link: "/about-us",
-    },
-    {
-      name: "Contact Us",
-      link: "/contact",
-    },
+    { name: "Home", link: "/" },
+    { name: "Autism Care Center", link: "/autism-care-center" },
+    { name: "Career Counselling", link: "/career-counselling" },
+    { name: "Services", link: "/services" },
+    { name: "Internships", link: "/internships" },
+    { name: "About Us", link: "/about-us" },
+    { name: "Contact Us", link: "/contact" },
   ];
 
   const socials: Social[] = [
-    {
-      name: "Instagram",
-      icon: <FaInstagram />,
-      link: "www.google.com",
-    },
-    {
-      name: "Instagram",
-      icon: <FaLinkedin />,
-      link: "www.google.com",
-    },
-    {
-      name: "Instagram",
-      icon: <FaTelegramPlane />,
-      link: "www.google.com",
-    },
-    {
-      name: "Instagram",
-      icon: <FaWhatsapp />,
-      link: "www.google.com",
-    },
+    { name: "Instagram", icon: <FaInstagram />, link: "www.instagram.com" },
+    { name: "LinkedIn", icon: <FaLinkedin />, link: "www.linkedin.com" },
+    { name: "Telegram", icon: <FaTelegramPlane />, link: "www.telegram.com" },
+    { name: "WhatsApp", icon: <FaWhatsapp />, link: "www.whatsapp.com" },
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 transform ${isVisible ? 'translate-y-0' : '-translate-y-full shadow-none'} ${scrolled ? 'py-4' : 'py-8'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ease-in-out transform ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'} ${scrolled ? 'py-4' : 'py-8'}`}>
       <div className={`mx-auto max-w-7xl px-6 rounded-full transition-all duration-700 ${scrolled ? 'bg-white/70 backdrop-blur-2xl shadow-premium py-3 border border-white/20' : 'bg-transparent py-4'}`}>
         <div className="flex justify-between items-center cursor-pointer">
           <Link href={"/"} className="transition-transform duration-500 hover:scale-105 active:scale-95 group">

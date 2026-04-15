@@ -54,11 +54,20 @@ export default function Main() {
     return () => clearInterval(interval);
   }, []);
 
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div ref={container} className="w-full h-screen relative overflow-hidden bg-charcoal">
       <AnimatePresence>
         <motion.div 
           key={slide}
+          style={{ opacity: 1 - scrollY / 700 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -83,8 +92,11 @@ export default function Main() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="relative z-10 flex items-center h-full px-6 md:px-24">
-        <div className="max-w-4xl">
+      <div className="relative z-10 flex items-center h-full px-6 md:px-24 pt-20">
+        <motion.div 
+          style={{ opacity: 1 - scrollY / 500, y: scrollY * 0.3 }}
+          className="max-w-4xl"
+        >
           <div className="overflow-hidden mb-6 text-reveal-mask">
             <p className="hero-text text-mint uppercase tracking-[0.4em] font-semibold text-xs md:text-sm">
               {slides[slide].topPara}
@@ -116,7 +128,7 @@ export default function Main() {
                 Learn More
              </button>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
 
       <div className="absolute bottom-12 left-6 md:left-24 flex items-end gap-3 z-30">

@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 function Main () {
   return (
-    <section className='h-fit my-20 w-screen lg:px-28 sm:px-16 px-7 flex md:flex-row flex-col-reverse items-center gap-y-10'>
+    <section className='h-fit mt-32 mb-20 w-screen lg:px-28 sm:px-16 px-7 flex md:flex-row flex-col-reverse items-center gap-y-10'>
       <div className='lg:w-[70%] md:w-[60%] w-full flex flex-col justify-center md:text-left text-center'>
         <h1 className='sm:text-5xl text-4xl font-bold text-[#FE3E3E]'>
           About Us
