@@ -1,10 +1,10 @@
 import React from 'react'
-import Hero from './Components/main'
-import JourneySection from './Components/journey'
-import PricingSection from './Components/pricing'
-import PhotoSlider from './Components/slider'
-import Testimonials from './Components/testimonials'
-import Map from './Components/map'
+import Hero from './components/main'
+import JourneySection from './components/journey'
+import PricingSection from './components/pricing'
+import PhotoSlider from './components/slider'
+import Testimonials from './components/testimonials'
+import Map from './components/map'
 
 function page () {
   return (

@@ -1,9 +1,9 @@
 'use client'
 import React from 'react'
-import Main from './Components/Main'
-import Phases from './Components/Phases'
-import FAQ from './Components/FAQ'
-import Cards from './Components/Cards'
+import Main from './components/Main'
+import Phases from './components/Phases'
+import FAQ from './components/FAQ'
+import Cards from './components/Cards'
 import { motion } from 'motion/react'
 
 function page () {
