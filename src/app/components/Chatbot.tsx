@@ -75,11 +75,23 @@ export default function Chatbot() {
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!hasOpened) setShowWelcome(true);
+    const welcomeTimer = setTimeout(() => {
+      if (!hasOpened && !isOpen) setShowWelcome(true);
     }, 4000);
-    return () => clearTimeout(timer);
-  }, [hasOpened]);
+
+    const autoOpenTimer = setTimeout(() => {
+      if (!hasOpened && !isOpen) {
+        setIsOpen(true);
+        setShowWelcome(false);
+        setHasOpened(true);
+      }
+    }, 8000);
+
+    return () => {
+      clearTimeout(welcomeTimer);
+      clearTimeout(autoOpenTimer);
+    };
+  }, [hasOpened, isOpen]);
 
   const scrollToBottom = () => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });

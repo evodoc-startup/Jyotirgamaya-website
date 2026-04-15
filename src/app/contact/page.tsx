@@ -28,6 +28,13 @@ export default function ContactPage() {
     },
   ];
 
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  };
+
   return (
     <main className="w-full min-h-screen pt-32 pb-24 bg-gray-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -83,48 +90,83 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 bg-white rounded-[2.5rem] p-8 md:p-12 shadow-premium border border-gray-50 flex flex-col"
+            className="lg:col-span-2 bg-white rounded-[2.5rem] p-8 md:p-12 shadow-premium border border-gray-50 flex flex-col relative overflow-hidden"
           >
-            <form className="space-y-8 flex-grow" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-4">
-                  <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Your Name</label>
-                  <input 
-                    type="text" 
-                    placeholder="Enter your name" 
-                    className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-indigo transition-all"
-                  />
-                </div>
-                <div className="space-y-4">
-                  <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Email Address</label>
-                  <input 
-                    type="email" 
-                    placeholder="Enter your email" 
-                    className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-indigo transition-all"
-                  />
-                </div>
-              </div>
-              <div className="space-y-4">
-                <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Subject</label>
-                <select className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-indigo transition-all appearance-none cursor-pointer">
-                  <option>Career Counselling Inquiry</option>
-                  <option>Autism Center Inquiry</option>
-                  <option>Internship Application</option>
-                  <option>Others</option>
-                </select>
-              </div>
-              <div className="space-y-4">
-                <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Message</label>
-                <textarea 
-                  rows={5}
-                  placeholder="Tell us how we can help..." 
-                  className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-indigo transition-all resize-none"
-                />
-              </div>
-              <button className="w-full md:w-fit px-12 py-6 bg-charcoal text-white rounded-full font-bold uppercase tracking-widest text-sm hover:bg-indigo transition-all duration-500 shadow-xl transform hover:-translate-y-1">
-                Send Message
-              </button>
-            </form>
+            <AnimatePresence mode="wait">
+              {!isSubmitted ? (
+                <motion.form 
+                  key="form"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="space-y-8 flex-grow" 
+                  onSubmit={handleSubmit}
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Your Name</label>
+                      <input 
+                        type="text" 
+                        required
+                        placeholder="Enter your name" 
+                        className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-indigo transition-all"
+                      />
+                    </div>
+                    <div className="space-y-4">
+                      <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Email Address</label>
+                      <input 
+                        type="email" 
+                        required
+                        placeholder="Enter your email" 
+                        className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-indigo transition-all"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Subject</label>
+                    <select className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-indigo transition-all appearance-none cursor-pointer">
+                      <option>Career Counselling Inquiry</option>
+                      <option>Autism Center Inquiry</option>
+                      <option>Internship Application</option>
+                      <option>Others</option>
+                    </select>
+                  </div>
+                  <div className="space-y-4">
+                    <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Message</label>
+                    <textarea 
+                      rows={5}
+                      required
+                      placeholder="Tell us how we can help..." 
+                      className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-indigo transition-all resize-none"
+                    />
+                  </div>
+                  <button type="submit" className="w-full md:w-fit px-12 py-6 bg-charcoal text-white rounded-full font-bold uppercase tracking-widest text-sm hover:bg-indigo transition-all duration-500 shadow-xl transform hover:-translate-y-1">
+                    Send Message
+                  </button>
+                </motion.form>
+              ) : (
+                <motion.div 
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex flex-col items-center justify-center text-center py-20"
+                >
+                  <div className="w-24 h-24 rounded-full bg-mint flex items-center justify-center text-charcoal text-4xl mb-8 animate-bounce">
+                    ✓
+                  </div>
+                  <h2 className="text-3xl font-serif text-charcoal mb-4">Message Illuminted!</h2>
+                  <p className="text-gray-500 max-w-sm mb-10">
+                    Thank you for reaching out. Our team will review your message and get back to you within 24 hours.
+                  </p>
+                  <button 
+                    onClick={() => setIsSubmitted(false)}
+                    className="text-indigo font-bold uppercase tracking-widest text-xs hover:underline"
+                  >
+                    Send another message
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
       </div>
