@@ -45,13 +45,15 @@ function Footer () {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-12">
         {/* Brand Section */}
         <div className="space-y-8">
-          <Image
-            src="/Logo.png"
-            alt="Logo"
-            height={200}
-            width={200}
-            className="h-14 w-auto brightness-0 invert"
-          />
+          <div className="bg-white p-2 rounded-xl inline-block shadow-sm overflow-hidden h-fit w-fit">
+            <Image
+              src="/Logo.png"
+              alt="Logo"
+              height={200}
+              width={200}
+              className="h-10 w-auto object-contain"
+            />
+          </div>
           <p className="text-white/60 font-light leading-relaxed max-w-xs">
             "Jyotirgamya - Navigating Paths, Illuminating Lives. Empowering every individual to unlock their true potential."
           </p>
