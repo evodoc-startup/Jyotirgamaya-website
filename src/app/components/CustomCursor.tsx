@@ -62,14 +62,29 @@ export default function CustomCursor() {
   }, [mouseX, mouseY, isVisible, scale]);
 
   return (
-    <motion.div
-      className={`fixed top-0 left-0 w-6 h-6 rounded-full pointer-events-none z-[9999] hidden md:block border transition-all duration-500 ${isHovering ? 'bg-indigo/5 border-indigo/40 scale-150' : 'bg-transparent border-indigo/20'}`}
-      style={{
-        x: mouseX,
-        y: mouseY,
-        scale: scale,
-        opacity: isVisible ? 1 : 0,
-      }}
-    />
+    <>
+      {/* Outer Ring */}
+      <motion.div
+        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] hidden md:block border border-watermelon-red/30"
+        style={{
+          x: mouseX,
+          y: mouseY,
+          scale: scale,
+          opacity: isVisible ? 1 : 0,
+          mixBlendMode: "difference",
+        }}
+      />
+      {/* Inner Dot */}
+      <motion.div
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full pointer-events-none z-[9999] hidden md:block bg-watermelon-red"
+        style={{
+          x: mouseX,
+          y: mouseY,
+          left: 12,
+          top: 12,
+          opacity: isVisible ? 1 : 0,
+        }}
+      />
+    </>
   );
 }
