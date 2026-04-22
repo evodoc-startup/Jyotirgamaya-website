@@ -32,11 +32,10 @@ function Main () {
           viewport={{ once: true }}
         >
           <motion.p
-            className='xl:text-5xl sm:text-4xl text-3xl text-white tracking-wider font-bold'
-            initial={{opacity: 0}}
-            animate={{opacity: 1, transition: {duration: 2}}}
+            className='xl:text-6xl sm:text-5xl text-4xl text-white tracking-tight font-serif font-bold leading-tight'
+            initial={{opacity: 0, y: 20}}
+            animate={{opacity: 1, y: 0, transition: {duration: 1.5}}}
             viewport={{ once: true }}
-            style={{lineHeight: "80px"}}
           >
             "Empowering Minds: Your Journey to Emotional Well-Being Starts
             Here!"
