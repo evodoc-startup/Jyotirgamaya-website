@@ -23,6 +23,10 @@ module.exports = {
           orange: "#C2410C",
           blue: "#1E3A8A",
           charcoal: "#111827",
+          coral: "#FF6B6B",
+          emerald: "#2ECC71",
+          sunflower: "#F1C40F",
+          ocean: "#3498DB",
         },
         boxShadow: {
             'premium': '0 20px 50px -12px rgba(0, 0, 0, 0.15)',

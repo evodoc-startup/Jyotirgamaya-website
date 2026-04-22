@@ -279,9 +279,9 @@ export default function Chatbot() {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="group relative flex items-center gap-3 md:gap-4 bg-charcoal text-white rounded-full p-2 pr-5 md:pr-6 shadow-2xl transition-all duration-500 hover:shadow-mint/20"
+        className="group relative flex items-center gap-3 md:gap-4 bg-emerald text-white rounded-full p-2 pr-5 md:pr-6 shadow-2xl transition-all duration-500 hover:shadow-emerald/30"
       >
-        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-mint flex items-center justify-center text-charcoal text-xl md:text-2xl transition-transform duration-500 relative">
+        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white flex items-center justify-center text-emerald text-xl md:text-2xl transition-transform duration-500 relative">
            {isOpen ? <HiXMark /> : <HiChatBubbleBottomCenterText />}
            {!hasOpened && (
              <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#FE3E3E] text-[10px] flex items-center justify-center rounded-full border border-white">

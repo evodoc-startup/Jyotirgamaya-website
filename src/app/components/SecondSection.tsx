@@ -3,26 +3,26 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 
 function SecondSection() {
-  const circularElements = [
+   const circularElements = [
     {
       icon: "/mind.svg",
       text: "Autism Therapy",
-      color: "blue",
+      color: "ocean",
     },
     {
       icon: "/behavioral.svg",
       text: "Behavioural Therapy",
-      color: "pink",
+      color: "coral",
     },
     {
       icon: "/work.svg",
       text: "Internships",
-      color: "gold",
+      color: "sunflower",
     },
     {
       icon: "/write.svg",
       text: "Assignments",
-      color: "moonstone",
+      color: "emerald",
     },
   ];
 
@@ -36,7 +36,7 @@ function SecondSection() {
           rotate: [0, 90, 0] 
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute -top-24 -left-24 w-96 h-96 bg-mint/5 rounded-full blur-3xl pointer-events-none"
+        className="absolute -top-24 -left-24 w-96 h-96 bg-coral/5 rounded-full blur-3xl pointer-events-none"
       />
       <motion.div 
         animate={{ 
@@ -44,7 +44,7 @@ function SecondSection() {
           y: [0, 120, 0],
         }}
         transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        className="absolute top-1/2 -right-24 w-[30rem] h-[30rem] bg-indigo/5 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/2 -right-24 w-[30rem] h-[30rem] bg-ocean/5 rounded-full blur-3xl pointer-events-none"
       />
 
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
@@ -60,23 +60,23 @@ function SecondSection() {
               whileHover={{ y: -15 }}
             >
               <div
-                className={`relative overflow-visible rounded-full border border-gray-100 bg-white shadow-premium p-10 md:p-12 transition-all duration-700 group-hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] group-hover:border-mint/20`}>
+                className={`relative overflow-visible rounded-full border border-gray-100 bg-white shadow-premium p-10 md:p-12 transition-all duration-700 group-hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)]`}>
                 <div 
-                  className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-10 bg-${item.color} transition-opacity duration-500`} 
+                  className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 bg-${item.color} transition-all duration-500`} 
                 />
                 <Image
                   src={item.icon}
                   alt={item.text}
                   height={120}
                   width={120}
-                  className="h-16 w-16 md:h-20 md:w-20 object-contain transition-transform duration-700 group-hover:scale-110 group-hover:rotate-6"
+                  className="h-16 w-16 md:h-20 md:w-20 object-contain transition-transform duration-700 group-hover:scale-110 group-hover:rotate-6 relative z-10"
                 />
               </div>
               <div className="mt-8 flex flex-col items-center">
-                 <h3 className="text-charcoal text-lg md:text-xl font-serif font-medium tracking-tight mb-2 text-center text-nowrap transition-colors duration-300 group-hover:text-indigo">
+                 <h3 className="text-charcoal text-lg md:text-xl font-serif font-medium tracking-tight mb-2 text-center text-nowrap transition-colors duration-300 group-hover:text-ocean">
                    {item.text}
                  </h3>
-                 <div className={`w-0 h-0.5 bg-mint group-hover:w-full transition-all duration-500`} />
+                 <div className={`w-0 h-0.5 bg-${item.color} group-hover:w-full transition-all duration-500`} />
               </div>
             </motion.div>
           ))}

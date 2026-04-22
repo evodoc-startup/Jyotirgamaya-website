@@ -120,11 +120,11 @@ export default function Main() {
             transition={{ delay: 1, duration: 0.8 }}
             className="flex flex-wrap gap-6"
           >
-             <button className="group relative px-10 py-5 bg-white text-charcoal font-bold rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl hover:shadow-mint/20">
-                <span className="absolute inset-0 bg-mint translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+             <button className="group relative px-10 py-5 bg-coral text-white font-bold rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl hover:shadow-coral/30">
+                <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
                 <span className="relative z-10">Get Started</span>
              </button>
-             <button className="px-10 py-5 border border-white/20 text-white font-bold rounded-full backdrop-blur-md hover:bg-white/10 transition-all duration-300 hover:border-white/50">
+             <button className="px-10 py-5 border-2 border-ocean text-ocean hover:bg-ocean hover:text-white font-bold rounded-full backdrop-blur-md transition-all duration-300 shadow-lg hover:shadow-ocean/20">
                 Learn More
              </button>
           </motion.div>
