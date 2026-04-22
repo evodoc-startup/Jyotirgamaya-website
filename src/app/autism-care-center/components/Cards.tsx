@@ -48,7 +48,7 @@ export default function ProgramCarousel () {
   }
 
   return (
-    <div className='w-full py-10 relative flex flex-col items-center bg-moonstone mt-10 mb-20'>
+    <div className='w-full py-20 relative flex flex-col items-center bg-watermelon-green/10 mt-10 mb-20 rounded-[3rem]'>
       {/* Desktop Netflix-Style Carousel */}
       <div className='hidden md:block relative w-full h-[350px] items-center justify-center'>
         {programs.map((program, index) => {
@@ -63,30 +63,28 @@ export default function ProgramCarousel () {
           return (
             <div
               key={index}
-              className={`absolute w-[400px] transition-all duration-700 ease-in-out bg-pink rounded-xl overflow-x-hidden p-5 text-white ${
-                isActive ? 'z-20' : 'scale-100 z-10 opacity-80'
+              className={`absolute w-[400px] transition-all duration-700 ease-in-out bg-white shadow-premium border border-gray-100 rounded-[2rem] overflow-hidden p-6 ${
+                isActive ? 'z-20' : 'scale-100 z-10 opacity-40'
               } ${rotate}`}
               style={{
                 left: '50%',
                 transform: `translateX(-50%) translateX(${offset}px) scale(${
-                  isActive ? 1.32 : 1
+                  isActive ? 1.25 : 1
                 })`,
-                transition:
-                  'transform 0.6s ease-in-out, opacity 0.6s ease-in-out'
               }}
             >
-              <div className='w-full h-56 relative'>
+              <div className='w-full h-56 relative rounded-2xl overflow-hidden shadow-inner'>
                 <Image
                   src={program.image}
                   alt={program.title}
                   layout='fill'
                   objectFit='cover'
-                  className='rounded-t-xl'
+                  className='rounded-2xl'
                 />
               </div>
-              <div className='w-full p-5 text-center'>
-                <h3 className='text-2xl font-bold'>{program.title}</h3>
-                <p className='text-gray-300 mt-2'>{program.description}</p>
+              <div className='w-full pt-6 text-center'>
+                <h3 className='text-2xl font-serif font-bold text-charcoal tracking-tight'>{program.title}</h3>
+                <p className='text-charcoal/70 mt-2 font-sans text-sm leading-relaxed'>{program.description}</p>
               </div>
             </div>
           )
@@ -95,26 +93,26 @@ export default function ProgramCarousel () {
 
       {/* Mobile Normal Slider Carousel */}
       <div className='block md:hidden w-full overflow-x-auto scrollbar-hide'>
-        <div className='flex gap-4 px-5 w-max'>
+        <div className='flex gap-6 px-8 w-max'>
           {programs.map((program, index) => (
             <div
               key={index}
-              className='w-[80%] max-w-[250px] bg-pink shadow-lg rounded-lg p-3 flex-shrink-0'
+              className='w-[280px] bg-white shadow-premium border border-gray-100 rounded-[2rem] p-4 flex-shrink-0'
             >
-              <div className='w-full h-40 relative'>
+              <div className='w-full h-44 relative rounded-xl overflow-hidden'>
                 <Image
                   src={program.image}
                   alt={program.title}
                   layout='fill'
                   objectFit='cover'
-                  className='rounded-lg'
+                  className='rounded-xl'
                 />
               </div>
-              <div className='p-3 text-center'>
-                <h3 className='text-lg font-bold text-white'>
+              <div className='pt-4 text-center'>
+                <h3 className='text-xl font-serif font-bold text-charcoal'>
                   {program.title}
                 </h3>
-                <p className='text-gray-300 text-sm'>{program.description}</p>
+                <p className='text-charcoal/70 text-sm font-sans mt-2'>{program.description}</p>
               </div>
             </div>
           ))}

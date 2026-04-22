@@ -58,27 +58,27 @@ function FAQ () {
   ]
 
   return (
-    <section className='py-5 md:px-24 px-14 my-10 flex md:flex-row flex-col items-center justify-center relative z-0'>
+    <section className='py-20 md:px-24 px-10 my-10 flex md:flex-row flex-col items-start justify-center relative z-0 gap-16'>
       <motion.div
         className='md:w-1/2 w-full flex items-center'
         initial={{ y: 10, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1, transition: { duration: 1 } }}
       >
-        <div className='flex flex-col items-center justify-center'>
-          <h3 className='text-center text-4xl tracking-widest leading-relaxed'>
-            <span className='text-red-700'>F</span>requently{' '}
-            <span className='text-blue'>A</span>sked{' '}
-            <span className='text-pink'>Q</span>uestions
-          </h3>
-          <div className='h-[1px] w-[60%] bg-black mx-auto my-5'></div>
-          <div className='my-10 md:block hidden'>
-            <Image src={'/faq.png'} height={400} width={400} alt='FAQ Image' />
+        <div className='flex flex-col items-start'>
+          <h2 className='text-left text-5xl md:text-6xl font-serif font-bold text-charcoal leading-tight tracking-tight'>
+            Common <br/>
+            <span className='text-watermelon-red'>Questions</span>
+          </h2>
+          <div className='h-1.5 w-24 bg-watermelon-green mt-6 mb-10 rounded-full'></div>
+          <div className='my-10 md:block hidden relative'>
+             <div className="absolute inset-0 bg-watermelon-red/10 rounded-[3rem] blur-3xl -z-10" />
+            <Image src={'/faq.png'} height={450} width={450} alt='FAQ Image' className="rounded-[3rem] object-cover shadow-premium" />
           </div>
         </div>
       </motion.div>
 
       <motion.div
-        className='md:w-1/2 w-full flex flex-col justify-center gap-5'
+        className='md:w-1/2 w-full flex flex-col justify-center gap-6'
         variants={containerVariants}
         initial='hidden'
         whileInView='visible'
@@ -96,11 +96,10 @@ function FAQ () {
       </motion.div>
 
       <div>
-        <p className='tracking-widest absolute right-28 text-[400px] -rotate-[30deg] bottom-40 -z-10 text-[#D0CBCB] opacity-15'>
+        <p className='tracking-widest absolute right-28 text-[300px] font-serif -rotate-[30deg] bottom-40 -z-10 text-watermelon-red opacity-[0.03]'>
           FAQ
         </p>
       </div>
-      <div className='bg-[#6F93E0] h-36 w-36 md:block hidden absolute top-0 rotate-45 -left-20'></div>
     </section>
   )
 }
@@ -120,25 +119,23 @@ function Question ({
 }) {
   return (
     <motion.div
-      className='w-full h-fit py-6 rounded-lg shadow-md px-10 z-10'
+      className={`w-full h-fit py-8 rounded-[2rem] shadow-premium border border-gray-100 px-10 z-10 cursor-pointer transition-all duration-500 ${isOpen ? 'bg-white' : 'bg-gray-50/50 hover:bg-white'}`}
       onClick={() => toggleFAQ(index)}
       variants={itemVariants}
       viewport={{ once: true }}
     >
-      <div className='w-full flex justify-between items-center tracking-wider text-lg'>
+      <div className='w-full flex justify-between items-center text-xl font-serif font-semibold text-charcoal'>
         <p>{question}</p>
-        <FaAngleDown
-          className={`${
-            isOpen ? 'rotate-180' : 'rotate-0'
-          } transition-transform duration-500 ease-in-out`}
-        />
+        <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-watermelon-red text-white rotate-180' : 'bg-white text-charcoal border border-gray-100'}`}>
+          <FaAngleDown />
+        </div>
       </div>
       <div
-        className={`overflow-hidden transition-[max-height] duration-500 ease-in-out ${
-          isOpen ? 'max-h-96' : 'max-h-0'
+        className={`overflow-hidden transition-all duration-700 ease-in-out ${
+          isOpen ? 'max-h-96 opacity-100 mt-6' : 'max-h-0 opacity-0'
         }`}
       >
-        <p className='tracking-wider my-5'>{answer}</p>
+        <p className='font-sans text-charcoal/70 leading-relaxed text-lg'>{answer}</p>
       </div>
     </motion.div>
   )

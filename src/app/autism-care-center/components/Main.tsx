@@ -13,8 +13,8 @@ function Main () {
         whileInView={{ x: 0, opacity: 1, transition: { duration: 1 } }}
         viewport={{ once: true }}
       >
-        <h1 className='text-5xl mb-10'>What is Autism ?</h1>
-        <p className='tracking-widest leading-loose text-justify'>
+        <h1 className='text-4xl md:text-5xl mb-8 font-serif text-charcoal tracking-tight'>What is Autism ?</h1>
+        <p className='text-charcoal/80 leading-relaxed text-justify font-sans'>
           Autism, or Autism Spectrum Disorder (ASD), is a neurodevelopmental
           condition characterized by differences in communication, social
           interaction, and repetitive behaviors. It is a spectrum, meaning it
@@ -24,9 +24,10 @@ function Main () {
         </p>
         <Link
           href={'/'}
-          className='block w-fit my-8 px-6 py-2 rounded-xl text-white font-bold bg-blue'
+          className='group relative block w-fit my-8 px-8 py-3.5 bg-watermelon-red text-white font-bold rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl hover:shadow-watermelon-red/30'
         >
-          Know More
+          <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+          <span className="relative z-10">Know More</span>
         </Link>
       </motion.div>
       <motion.div
