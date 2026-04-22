@@ -80,13 +80,13 @@ function Internships () {
   return (
     <section>
       {/* Desktop View */}
-      <div className='py-10 xl:px-52 lg:px-32 hidden lg:flex flex-col gap-y-24 mt-20'>
+      <div className='py-10 xl:px-52 lg:px-32 hidden lg:flex flex-col gap-y-32 mt-20'>
         {internships.map((internship, index) => {
           const isReversed = index % 2 !== 0
           return (
             <div
               key={`internship-${index}`}
-              className={`w-full flex justify-around gap-x-6 ${
+              className={`w-full flex justify-around gap-x-16 items-center ${
                 isReversed ? 'flex-row-reverse' : ''
               }`}
             >
@@ -97,36 +97,47 @@ function Internships () {
                 viewport={{ once: true }}
                 variants={isReversed ? rightVariant : leftVariant}
               >
-                <h3 className='text-3xl tracking-widest leading-normal font-semibold'>
+                <h3 className='text-4xl tracking-tight leading-tight font-serif font-bold text-charcoal'>
                   {internship.title}
                 </h3>
                 <div
-                  className='h-[1px] my-3 w-full'
+                  className='h-1 my-6 w-full rounded-full opacity-30'
                   style={{ background: internship.lineColor }}
                 ></div>
-                <p className='my-4 font-bold'>Overview:</p>
-                <p>{internship.overview}</p>
-                <p className='my-4 font-bold'>Focus:</p>
-                <p>{internship.focus}</p>
+                
+                <div className="space-y-6 font-sans text-charcoal/80">
+                  <div>
+                    <p className='mb-1 font-bold text-charcoal uppercase text-xs tracking-widest'>Overview:</p>
+                    <p className="leading-relaxed">{internship.overview}</p>
+                  </div>
+                  <div>
+                    <p className='mb-1 font-bold text-charcoal uppercase text-xs tracking-widest'>Focus:</p>
+                    <p className="leading-relaxed">{internship.focus}</p>
+                  </div>
+                </div>
+
                 <Link
-                  href='/'
-                  className='py-2 px-5 my-4 bg-[#FF9B28] text-white w-fit'
+                  href='/contact'
+                  className='group relative py-4 px-10 my-8 bg-watermelon-green text-white font-bold rounded-full w-fit overflow-hidden transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-watermelon-green/30'
                 >
-                  Explore Now
+                  <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                  <span className="relative z-10 uppercase tracking-widest text-xs">Contact Us</span>
                 </Link>
               </motion.div>
               <motion.div
-                className='w-fit flex items-center'
+                className='w-[45%] flex items-center justify-center relative'
                 initial='hidden'
                 whileInView='visible'
                 viewport={{ once: true }}
                 variants={isReversed ? leftVariant : rightVariant}
               >
+                <div className="absolute inset-0 bg-gray-50 rounded-[3rem] rotate-3 z-0" />
                 <Image
                   src={internship.image}
-                  height={400}
-                  width={400}
+                  height={500}
+                  width={500}
                   alt={`internship-${index + 1}`}
+                  className="relative z-10 rounded-[3rem] shadow-premium object-cover aspect-square"
                 />
               </motion.div>
             </div>
@@ -135,42 +146,42 @@ function Internships () {
       </div>
 
       {/* Mobile View */}
-      <div className='py-10 lg:hidden px-10 flex flex-col gap-y-24 mt-20'>
+      <div className='py-10 lg:hidden px-6 flex flex-col gap-y-20 mt-10'>
         {internships.map((internship, index) => (
           <motion.div
             key={`internship-mobile-${index}`}
-            className='w-full flex flex-col gap-y-6 shadow-xl hover:shadow-2xl rounded-lg transition-all duration-300 justify-center items-center overflow-hidden'
+            className='w-full flex flex-col shadow-premium bg-white rounded-[2.5rem] overflow-hidden'
             initial='hidden'
             whileInView='visible'
             viewport={{ once: true }}
             variants={upVariant}
           >
-            <div className='w-full flex items-center'>
+            <div className='w-full h-72 relative'>
               <Image
                 src={internship.image}
                 height={400}
                 width={400}
                 alt={`internship-${index + 1}`}
-                className='w-full h-96 object-cover'
+                className='w-full h-full object-cover'
               />
             </div>
-            <div className='w-full flex flex-col md:p-10 p-7'>
-              <h3 className='text-3xl tracking-widest leading-normal'>
+            <div className='w-full flex flex-col p-8'>
+              <h3 className='text-3xl font-serif font-bold text-charcoal leading-tight'>
                 {internship.title}
               </h3>
               <div
-                className='h-[1px] my-3 w-full'
+                className='h-1 my-4 w-12 rounded-full opacity-50'
                 style={{ background: internship.lineColor }}
               ></div>
-              <p className='my-4 font-bold'>Overview:</p>
-              <p>{internship.overview}</p>
-              <p className='my-4 font-bold'>Focus:</p>
-              <p>{internship.focus}</p>
+              <div className="space-y-4 font-sans text-charcoal/70 text-sm">
+                <p><span className="font-bold text-charcoal mr-2">Overview:</span>{internship.overview}</p>
+                <p><span className="font-bold text-charcoal mr-2">Focus:</span>{internship.focus}</p>
+              </div>
               <Link
-                href='https://docs.google.com/forms/d/e/1FAIpQLScqCcLemkkaBaA8EBDAy7UHY17kbHym7t4Eerm-004STiN1gw/viewform?usp=header'
-                className='py-2 px-4 my-4 bg-[#FF9B28] text-white w-fit'
+                href='/contact'
+                className='mt-8 py-4 px-8 bg-watermelon-green text-white font-bold rounded-full text-center uppercase tracking-widest text-xs'
               >
-                Explore Now
+                Contact Us
               </Link>
             </div>
           </motion.div>
