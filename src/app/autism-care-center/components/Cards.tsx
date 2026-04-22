@@ -8,31 +8,31 @@ const programs = [
     title: 'Individual Sessions',
     description:
       'Customized one-on-one therapy to support the unique developmental needs of autistic students.',
-    image: '/a1.JPG'
+    image: '/indian-1.png'
   },
   {
     title: 'Group Sessions',
     description:
       'Encouraging social interaction and collaborative learning in a nurturing group environment.',
-    image: '/a2.JPG'
+    image: '/indian-2.png'
   },
   {
     title: 'Full Day Programs',
     description:
       'Comprehensive, immersive programs designed to build essential skills and confidence.',
-    image: '/a3.JPG'
+    image: '/indian-3.png'
   },
   {
     title: 'Early Intervention',
     description:
       'Specialized approaches to foster growth and development at the earliest stages.',
-    image: '/a4.JPG'
+    image: '/indian-4.png'
   },
   {
     title: 'Academic Program',
     description:
       'Tailored educational strategies to enhance learning and empower autistic students to thrive.',
-    image: '/a5.JPG'
+    image: '/indian-5.png'
   }
 ]
 
