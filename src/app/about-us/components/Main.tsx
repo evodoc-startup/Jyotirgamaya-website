@@ -33,16 +33,25 @@ import { motion } from 'framer-motion'
         </p>
       </div>
 
-      <div className='lg:w-[35%] md:w-[40%] w-full flex justify-center items-center relative z-10'>
+      <div className='lg:w-[45%] md:w-[40%] w-full flex justify-center items-center relative z-10'>
         <div className="relative group">
-          <div className="absolute -inset-4 bg-gradient-to-tr from-watermelon-red to-watermelon-green opacity-20 blur-2xl group-hover:opacity-30 transition-all duration-500 rounded-full" />
+          <div className="absolute -inset-4 bg-gradient-to-tr from-watermelon-red to-watermelon-green opacity-20 blur-2xl group-hover:opacity-30 transition-all duration-500 rounded-[3rem]" />
           <Image
-            src='/Logo.png'
-            height={400}
-            width={400}
-            alt='About'
-            className='relative z-10 w-full h-auto max-w-[300px] transform transition-transform duration-700 group-hover:scale-105'
+            src='/about-hero.jpg'
+            height={600}
+            width={600}
+            alt='Our Environment'
+            className='relative z-10 w-full h-auto rounded-[3rem] shadow-premium transform transition-transform duration-700 group-hover:scale-[1.02]'
           />
+          {/* Floating Logo Badge */}
+          <motion.div 
+            initial={{ scale: 0, rotate: -20 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ delay: 2, type: 'spring' }}
+            className="absolute -bottom-6 -right-6 z-20 bg-white p-4 rounded-2xl shadow-xl border border-gray-100"
+          >
+            <Image src="/Logo.png" alt="Jyotirgamya" width={100} height={40} className="h-8 w-auto" />
+          </motion.div>
         </div>
       </div>
     </section>
