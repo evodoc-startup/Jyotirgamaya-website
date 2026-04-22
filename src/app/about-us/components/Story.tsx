@@ -5,59 +5,81 @@ import Link from 'next/link'
 function Story () {
   return (
     <>
-      <div className='w-screen h-fit bg-gradient-to-r from-[#FFD60D] to-[#FFB109] flex md:flex-row flex-col xl:px-24 px-10 py-16 md:gap-16 gap-0'>
-        <div className='xl:w-[40%] md:w-[50%] w-full flex justify-center xl:items-end items-center'>
-          <div className='bg-[#ffeda6] p-10 fancy-border'>
-            <Image
-              src={'/about-2.jpg'}
-              alt='Image'
-              height={1000}
-              width={1000}
-              className='md:w-full w-[300px] h-auto aspect-square object-cover rounded-[40px]'
-            />
+      <section className='w-full h-fit bg-[#fafafa] relative overflow-hidden py-24 px-10 xl:px-32'>
+        <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        
+        <div className="max-w-7xl mx-auto flex md:flex-row flex-col gap-20 items-center">
+          <div className='xl:w-[45%] md:w-[50%] w-full relative'>
+            <div className='relative z-10 bg-white p-4 rounded-[3rem] shadow-premium transform -rotate-2'>
+              <Image
+                src='/about-2.jpg'
+                alt='Our Team'
+                height={600}
+                width={600}
+                className='w-full h-auto aspect-square object-cover rounded-[2.5rem]'
+              />
+            </div>
+            {/* Decorative shapes */}
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-watermelon-red/10 rounded-full blur-2xl -z-0" />
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-watermelon-green/10 rounded-full blur-2xl -z-0" />
+          </div>
+
+          <div className='xl:w-[55%] md:w-[50%] w-full flex flex-col justify-center'>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className='text-5xl md:text-6xl font-serif font-bold text-charcoal tracking-tight mb-8'
+            >
+              Our <span className="text-watermelon-red">Goal</span>
+            </motion.h2>
+            <div className="h-1.5 w-16 bg-watermelon-green mb-10 rounded-full" />
+            
+            <div className="space-y-6 text-lg text-charcoal/70 font-sans leading-relaxed text-justify">
+              <p>
+                Our goal is simple yet profound: to enrich parents and the new
+                generation with practical solutions that empower them to lead
+                better, more fulfilling lives. We are committed to addressing
+                emotional, behavioral, and developmental challenges while ensuring
+                that our services are accessible to everyone, regardless of their
+                economic background.
+              </p>
+              <p>
+                At <span className="text-charcoal font-bold">Jyotirgamya</span> we believe that psychological
+                well-being is a fundamental right, not a luxury. With this in mind,
+                our motto has always been to provide high-quality services at a
+                feasible and affordable cost. 
+              </p>
+              <p>
+                Since 2018, we have positively impacted countless lives by offering
+                compassionate, evidence-based care that empowers children and their
+                families to thrive.
+              </p>
+            </div>
           </div>
         </div>
-        <div className='xl:w-[60%] md:w-[50%] w-full md:items-end items-center flex flex-col md:text-justify text-center justify-center'>
-          <h1 className='text-[3.4rem] mb-5 font-bold text-[#FF373B] tracking-[5px]'>
-            <span className='text-[#ffeda6]'>O</span>ur Goal
-          </h1>
-          <p className='text-base tracking-wide'>
-            Our goal is simple yet profound: to enrich parents and the new
-            generation with practical solutions that empower them to lead
-            better, more fulfilling lives. We are committed to addressing
-            emotional, behavioral, and developmental challenges while ensuring
-            that our services are accessible to everyone, regardless of their
-            economic background. At Jyotirgamya we believe that psychological
-            well-being is a fundamental right, not a luxury. With this in mind,
-            our motto has always been to provide high-quality services at a
-            feasible and affordable cost. This ensures that families from all
-            economic backgrounds can access the care and support they need
-            without financial stress. From career counseling and child therapy
-            to autism intervention programs and parental workshops, our range of
-            services is tailored to meet the diverse needs of families. Since
-            2018, we have positively impacted countless lives by offering
-            compassionate, evidence-based care that empowers children and their
-            families to thrive.
+      </section>
+
+      <div className='w-full h-fit lg:px-44 px-10 bg-charcoal py-20 flex md:flex-row flex-col items-center justify-between gap-10 relative overflow-hidden'>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-watermelon-red rounded-full blur-[100px]" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-watermelon-green rounded-full blur-[100px]" />
+        </div>
+
+        <div className='md:w-[70%] w-full relative z-10'>
+          <p className='text-white/80 text-2xl md:text-3xl font-serif leading-tight md:text-left text-center'>
+            <span className='text-white font-bold italic'>Join us</span> in building a
+            future where emotional well-being is accessible to all.
           </p>
         </div>
-      </div>
-      <div className='w-full h-fit lg:px-44 sm:px-24 px-10 bg-[#5EC3CE] md:flex py-10 gap-10 relative overflow-hidden justify-between space-y-7'>
-        <div className='md::w-[70%] w-full flex items-center tracking-wide leading-relaxed z-20'>
-          <p className='text-white text-lg md:text-left text-center w-full'>
-            <span className='text-black font-bold'>Join us</span> in building a
-            future where emotional well-being is accessible to all, and every
-            child is given the opportunity to succeed.
-          </p>
-        </div>
-        <div className='md::w-[30%] w-full flex items-center justify-center'>
+
+        <div className='md:w-[30%] w-full flex items-center justify-center relative z-10'>
           <Link
-            href={'/services'}
-            className='px-5 bg-white py-2 rounded-md shadow-xl text-nowrap'
+            href='/contact'
+            className='group relative py-5 px-12 bg-watermelon-red text-white font-bold rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-watermelon-red/30 uppercase tracking-widest text-xs'
           >
-            Explore Now
+            Contact Us
           </Link>
         </div>
-        <div className='h-full rotate-45 aspect-square md:bg-[#6DF0FF] absolute top-1/2 left-[-80px] -z-0'></div>
       </div>
     </>
   )
