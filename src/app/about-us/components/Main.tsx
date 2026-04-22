@@ -39,10 +39,10 @@ function Main () {
         <div className="relative group">
           <div className="absolute -inset-4 bg-gradient-to-tr from-watermelon-red to-watermelon-green opacity-20 blur-2xl group-hover:opacity-30 transition-all duration-500 rounded-[3rem]" />
           <Image
-            src='/about-hero.jpg'
+            src='/about-team.png'
             height={600}
             width={600}
-            alt='Our Environment'
+            alt='Our Team'
             className='relative z-10 w-full h-auto rounded-[3rem] shadow-premium transform transition-transform duration-700 group-hover:scale-[1.02]'
           />
           {/* Floating Logo Badge */}
