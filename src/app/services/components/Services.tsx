@@ -109,18 +109,34 @@ function Services () {
 
   return (
     <section>
-      <div className='w-full px-10 py-10 bg-moonstone text-center'>
-        <h1 className='text-5xl font-bold tracking-wide text-white'>
-          Services
-        </h1>
-        <p className='mt-5 text-white tracking-wider font-semibold text-lg'>
-          Discover comprehensive psychological services designed to support your
-          mental health and personal growth. Whether you're seeking individual
-          therapy, group counseling, or family support, we offer tailored
-          solutions to help you thrive. With experienced professionals,
-          evidence-based therapies, and a compassionate approach, we're here to
-          guide you toward a better tomorrow.
-        </p>
+      <div className='w-full px-6 py-32 bg-gradient-to-br from-charcoal to-[#1a2b3c] text-center relative overflow-hidden'>
+        {/* Decorative Accents */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+          <div className="absolute top-10 left-10 w-64 h-64 bg-watermelon-red rounded-full blur-[100px]" />
+          <div className="absolute bottom-10 right-10 w-64 h-64 bg-watermelon-green rounded-full blur-[100px]" />
+        </div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className='text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-8'
+          >
+            Our <span className="text-watermelon-red">Services</span>
+          </motion.h1>
+          <div className="h-1.5 w-24 bg-watermelon-green mx-auto mb-10 rounded-full" />
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className='text-white/70 tracking-normal font-sans text-lg md:text-xl leading-relaxed'
+          >
+            Discover comprehensive psychological services designed to support your
+            mental health and personal growth. We offer tailored
+            solutions to help you thrive with experienced professionals and
+            a compassionate approach.
+          </motion.p>
+        </div>
       </div>
 
       {/* Desktop View */}
