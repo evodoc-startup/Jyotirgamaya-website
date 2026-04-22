@@ -1,7 +1,7 @@
+'use client'
 import React from 'react'
 import Image from 'next/image'
-
-function Main () {
+import { motion } from 'framer-motion'
   return (
     <section className='min-h-[60vh] pt-40 pb-20 w-full lg:px-28 sm:px-16 px-7 flex md:flex-row flex-col-reverse items-center gap-16 relative overflow-hidden bg-white'>
       {/* Background Accents */}
