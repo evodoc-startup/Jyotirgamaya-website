@@ -46,11 +46,11 @@ function Footer () {
         {/* Brand Section */}
         <div className="space-y-8">
           <Image
-            src="/logo-2.png"
+            src="/Logo.png"
             alt="Logo"
             height={200}
             width={200}
-            className="h-12 w-auto brightness-0 invert mix-blend-lighten"
+            className="h-14 w-auto brightness-0 invert"
           />
           <p className="text-white/60 font-light leading-relaxed max-w-xs">
             "Jyotirgamya - Navigating Paths, Illuminating Lives. Empowering every individual to unlock their true potential."
@@ -74,7 +74,7 @@ function Footer () {
         <div>
           <h3 className="font-serif text-xl mb-8 tracking-tight">Quick Links</h3>
           <ul className="space-y-4 text-white/50 font-light">
-            <li><a href="/about" className="hover:text-mint transition-colors">About Us</a></li>
+            <li><a href="/about-us" className="hover:text-mint transition-colors">About Us</a></li>
             <li><a href="/services" className="hover:text-mint transition-colors">Services</a></li>
             <li><a href="/contact" className="hover:text-mint transition-colors">Contact</a></li>
             <li><a href="/privacy" className="hover:text-mint transition-colors">Privacy Policy</a></li>
