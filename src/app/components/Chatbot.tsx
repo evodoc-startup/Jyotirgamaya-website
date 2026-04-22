@@ -274,25 +274,25 @@ export default function Chatbot() {
         )}
       </AnimatePresence>
 
-      {/* Trigger Button */}
+      {/* Trigger Button: Premium Watermelon Aesthetic */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.05, y: -2 }}
         whileTap={{ scale: 0.95 }}
-        className="group relative flex items-center gap-3 md:gap-4 bg-emerald text-white rounded-full p-2 pr-5 md:pr-6 shadow-2xl transition-all duration-500 hover:shadow-emerald/30"
+        className="group relative flex items-center gap-3 md:gap-4 bg-gradient-to-br from-watermelon-red to-[#FF758C] text-white rounded-full p-2 pr-5 md:pr-7 shadow-[0_15px_30px_-5px_rgba(255,94,98,0.4)] transition-all duration-500"
       >
-        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white flex items-center justify-center text-emerald text-xl md:text-2xl transition-transform duration-500 relative">
+        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white text-xl md:text-2xl transition-transform duration-500 relative shadow-inner">
            {isOpen ? <HiXMark /> : <HiChatBubbleBottomCenterText />}
            {!hasOpened && (
-             <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#FE3E3E] text-[10px] flex items-center justify-center rounded-full border border-white">
+             <span className="absolute -top-1 -right-1 w-4 h-4 bg-white text-[10px] text-watermelon-red flex items-center justify-center rounded-full border-2 border-watermelon-red font-bold animate-bounce">
                1
              </span>
            )}
         </div>
-        <span className="font-semibold text-xs md:text-sm tracking-tight">
-          {isOpen ? "Hide Chat" : "Need help?"}
+        <span className="font-bold text-xs md:text-sm tracking-tight uppercase">
+          {isOpen ? "Hide Assistant" : "Need help?"}
         </span>
-        <div className="absolute inset-0 rounded-full ring-4 ring-mint/20 animate-ping opacity-0 group-hover:opacity-100" />
+        <div className="absolute inset-0 rounded-full ring-4 ring-white/10 animate-pulse opacity-0 group-hover:opacity-100" />
       </motion.button>
     </div>
   );

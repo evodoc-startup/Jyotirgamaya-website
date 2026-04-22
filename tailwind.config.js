@@ -27,6 +27,8 @@ module.exports = {
           emerald: "#2ECC71",
           sunflower: "#F1C40F",
           ocean: "#3498DB",
+          "watermelon-red": "#FF5E62",
+          "watermelon-green": "#2ECC71",
         },
         boxShadow: {
             'premium': '0 20px 50px -12px rgba(0, 0, 0, 0.15)',
