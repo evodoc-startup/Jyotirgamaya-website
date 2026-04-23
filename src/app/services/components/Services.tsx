@@ -211,17 +211,17 @@ function Services () {
       </div>
 
       {/* Mobile View */}
-      <div className='py-10 lg:hidden px-6 flex flex-col gap-y-20 mt-10'>
+      <div className='py-12 lg:hidden px-5 flex flex-col gap-y-12 mt-5'>
         {services.map((service, index) => (
           <motion.div
             key={`service-mobile-${index}`}
-            className='w-full flex flex-col shadow-premium bg-white rounded-[2.5rem] overflow-hidden'
+            className='w-full flex flex-col shadow-premium bg-white rounded-[2rem] overflow-hidden border border-gray-50'
             initial='hidden'
             whileInView='visible'
             viewport={{ once: true }}
             variants={upVariant}
           >
-            <div className='w-full h-72 relative'>
+            <div className='w-full h-60 relative'>
               <Image
                 src={service.image}
                 height={400}
@@ -230,21 +230,21 @@ function Services () {
                 className='w-full h-full object-cover'
               />
             </div>
-            <div className='w-full flex flex-col p-8'>
-              <h3 className='text-3xl font-serif font-bold text-charcoal leading-tight'>
+            <div className='w-full flex flex-col p-6 pb-8'>
+              <h3 className='text-2xl font-serif font-bold text-charcoal leading-tight'>
                 {service.title}
               </h3>
               <div
-                className='h-1 my-4 w-12 rounded-full opacity-50'
+                className='h-1 my-4 w-10 rounded-full opacity-50'
                 style={{ background: service.lineColor }}
               ></div>
-              <div className="space-y-4 font-sans text-charcoal/70 text-sm">
-                <p><span className="font-bold text-charcoal mr-2">Overview:</span>{service.overview}</p>
-                <p><span className="font-bold text-charcoal mr-2">Best For:</span>{service.bestFor}</p>
+              <div className="space-y-4 font-sans text-charcoal/70 text-sm leading-relaxed">
+                <p><span className="font-bold text-charcoal mr-1">Overview:</span>{service.overview}</p>
+                <p><span className="font-bold text-charcoal mr-1">Best For:</span>{service.bestFor}</p>
               </div>
               <Link
                 href='/contact'
-                className='mt-8 py-4 px-8 bg-watermelon-red text-white font-bold rounded-full text-center uppercase tracking-widest text-xs'
+                className='mt-8 py-3.5 px-8 bg-watermelon-red text-white font-bold rounded-full text-center uppercase tracking-widest text-[10px]'
               >
                 Contact Us
               </Link>
