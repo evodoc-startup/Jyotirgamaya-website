@@ -5,7 +5,7 @@ import main1 from "../../../public/main1.jpg";
 import main2 from "../../../public/main2.jpg";
 import main3 from "../../../public/main3.jpg";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -54,20 +54,18 @@ export default function Main() {
     return () => clearInterval(interval);
   }, []);
 
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Performance Optimization: Use Framer Motion hooks instead of React state for scroll
+  const { scrollY } = useScroll();
+  const bgOpacity = useTransform(scrollY, [0, 700], [1, 0]);
+  const textOpacity = useTransform(scrollY, [0, 500], [1, 0]);
+  const textY = useTransform(scrollY, [0, 500], [0, 150]);
 
   return (
     <div ref={container} className="w-full h-[100svh] min-h-[600px] relative overflow-hidden bg-charcoal">
       <AnimatePresence>
         <motion.div 
           key={slide}
-          style={{ opacity: 1 - scrollY / 700 }}
+          style={{ opacity: bgOpacity }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -96,7 +94,7 @@ export default function Main() {
 
       <div className="relative z-10 flex items-center h-full px-6 md:px-24 pt-32 md:pt-32">
         <motion.div 
-          style={{ opacity: 1 - scrollY / 500, y: scrollY * 0.3 }}
+          style={{ opacity: textOpacity, y: textY }}
           className="max-w-4xl w-full"
         >
           <div className="overflow-hidden mb-4 md:mb-6 text-reveal-mask">
