@@ -112,8 +112,8 @@ function Navbar() {
                    &times;
                  </div>
               </div>
-              <ul className="flex flex-col gap-y-8 text-4xl md:text-5xl font-serif text-white">
-                <NavItems items={navItems} phoneNavOpen={phoneNavOpen} setPhoneNavOpen={setPhoneNavOpen} />
+              <ul className="flex flex-col gap-y-10 text-4xl md:text-5xl font-serif">
+                <NavItems items={navItems} phoneNavOpen={phoneNavOpen} setPhoneNavOpen={setPhoneNavOpen} mobile />
               </ul>
               <div className="mt-auto pt-10 border-t border-white/10 flex gap-8 justify-center">
                 {socials.map((social: Social, index: number) => (
