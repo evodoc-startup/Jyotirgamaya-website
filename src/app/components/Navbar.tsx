@@ -112,36 +112,25 @@ function Navbar() {
       <AnimatePresence>
         {phoneNavOpen && (
           <motion.div 
-            className="lg:hidden fixed inset-0 z-[1000] bg-white overflow-hidden flex flex-col"
-            initial={{ y: '-100%' }}
-            animate={{ y: 0 }}
-            exit={{ y: '-100%' }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:hidden absolute top-full left-0 w-full bg-white shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] rounded-b-3xl overflow-hidden border-t border-gray-50 flex flex-col z-[1000]"
+            initial={{ opacity: 0, y: -20, height: 0 }}
+            animate={{ opacity: 1, y: 0, height: 'auto' }}
+            exit={{ opacity: 0, y: -10, height: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            {/* Mobile Menu Header */}
-            <div className="flex justify-between items-center p-6 border-b border-gray-100">
-              <Image src="/Logo.png" height={120} width={120} alt="Logo" className="h-10 w-auto" />
-              <button 
-                onClick={() => setPhoneNavOpen(false)}
-                className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-charcoal text-3xl"
-              >
-                &times;
-              </button>
-            </div>
-
             {/* Mobile Menu Links */}
-            <div className="flex-grow flex flex-col justify-center px-10">
-              <ul className="flex flex-col gap-y-6 text-3xl font-serif text-charcoal">
-                <NavItems items={navItems} phoneNavOpen={phoneNavOpen} setPhoneNavOpen={setPhoneNavOpen} mobile={false} />
+            <div className="px-6 py-8">
+              <ul className="flex flex-col gap-y-4 text-xl font-serif text-charcoal">
+                <NavItems items={navItems} phoneNavOpen={phoneNavOpen} setPhoneNavOpen={setPhoneNavOpen} mobile={true} />
               </ul>
             </div>
 
             {/* Mobile Menu Footer */}
-            <div className="p-10 bg-gray-50 flex flex-col gap-6">
-              <p className="text-xs uppercase tracking-widest text-charcoal/40 font-bold">Connect With Us</p>
+            <div className="px-6 py-6 bg-gray-50/50 flex flex-col gap-4">
+              <p className="text-[10px] uppercase tracking-widest text-charcoal/40 font-bold">Connect With Us</p>
               <div className="flex gap-6">
                 {socials.map((social: Social, index: number) => (
-                  <Link href={social.link} key={"mob-soc" + index} className="text-2xl text-charcoal/60 hover:text-watermelon-red transition-colors">
+                  <Link href={social.link} key={"mob-soc" + index} className="text-xl text-charcoal/60 hover:text-watermelon-red transition-colors">
                     {social.icon}
                   </Link>
                 ))}
