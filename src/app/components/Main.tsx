@@ -66,7 +66,7 @@ export default function Main() {
         <motion.div 
           key={slide}
           style={{ opacity: bgOpacity }}
-          initial={{ opacity: 0 }}
+          initial={{ opacity: slide === 0 ? 1 : 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
@@ -84,6 +84,7 @@ export default function Main() {
               fill
               sizes="100vw"
               quality={60}
+              fetchPriority={slide === 0 ? "high" : "auto"}
               className="object-cover object-[65%_center] md:object-center brightness-[0.6] transition-all duration-1000"
               priority={slide === 0}
             />
