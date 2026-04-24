@@ -2,8 +2,12 @@ import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Chatbot from './components/Chatbot'
+import dynamic from 'next/dynamic'
 import './globals.css'
+
+const Chatbot = dynamic(() => import('./components/Chatbot'), {
+  ssr: false, // Don't render Chatbot on the server
+})
 
 const inter = Inter({
   variable: '--font-inter',

@@ -84,8 +84,10 @@ export default function Main() {
               src={slides[slide].image}
               alt="hero"
               fill
+              sizes="100vw"
+              quality={60}
               className="object-cover object-[65%_center] md:object-center brightness-[0.6] transition-all duration-1000"
-              priority
+              priority={slide === 0}
             />
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/20 to-transparent" />
