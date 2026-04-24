@@ -29,10 +29,35 @@ export default function ContactPage() {
   ];
 
   const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.currentTarget);
+    formData.append("access_key", "f2a5478c-4b9d-4858-bc1d-afcf5117b6a0");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        setIsSubmitted(true);
+      } else {
+        console.error("Error submitting form:", data);
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -102,11 +127,16 @@ export default function ContactPage() {
                   className="space-y-8 flex-grow" 
                   onSubmit={handleSubmit}
                 >
+                  {/* Web3Forms required hidden fields */}
+                  <input type="hidden" name="from_name" value="Jyotirgamya Website" />
+                  <input type="hidden" name="subject" value="New Contact Form Submission" />
+                  
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="space-y-4">
                       <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Your Name</label>
                       <input 
                         type="text" 
+                        name="name"
                         required
                         placeholder="Enter your name" 
                         className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-indigo transition-all"
@@ -116,6 +146,7 @@ export default function ContactPage() {
                       <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Email Address</label>
                       <input 
                         type="email" 
+                        name="email"
                         required
                         placeholder="Enter your email" 
                         className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-indigo transition-all"
@@ -123,25 +154,26 @@ export default function ContactPage() {
                     </div>
                   </div>
                   <div className="space-y-4">
-                    <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Subject</label>
-                    <select className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-indigo transition-all appearance-none cursor-pointer">
-                      <option>Career Counselling Inquiry</option>
-                      <option>Autism Center Inquiry</option>
-                      <option>Internship Application</option>
-                      <option>Others</option>
+                    <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Inquiry Type</label>
+                    <select name="inquiry_type" className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-indigo transition-all appearance-none cursor-pointer">
+                      <option value="Career Counselling Inquiry">Career Counselling Inquiry</option>
+                      <option value="Autism Center Inquiry">Autism Center Inquiry</option>
+                      <option value="Internship Application">Internship Application</option>
+                      <option value="Others">Others</option>
                     </select>
                   </div>
                   <div className="space-y-4">
                     <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Message</label>
                     <textarea 
+                      name="message"
                       rows={5}
                       required
                       placeholder="Tell us how we can help..." 
                       className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-indigo transition-all resize-none"
                     />
                   </div>
-                  <button type="submit" className="w-full md:w-fit px-12 py-6 bg-charcoal text-white rounded-full font-bold uppercase tracking-widest text-sm hover:bg-indigo transition-all duration-500 shadow-xl transform hover:-translate-y-1">
-                    Send Message
+                  <button type="submit" disabled={isSubmitting} className="w-full md:w-fit px-12 py-6 bg-charcoal text-white rounded-full font-bold uppercase tracking-widest text-sm hover:bg-indigo transition-all duration-500 shadow-xl transform hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed">
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
                 </motion.form>
               ) : (
