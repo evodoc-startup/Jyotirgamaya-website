@@ -11,21 +11,21 @@ function KnowMore() {
       title: "Who We Are?",
       description:
         "We’re a compassionate team of experts dedicated to transforming lives through personalized autism support and career assessment.",
-      link: "/about",
+      link: "/about-us",
     },
     {
       image: "/knowCard2.jpg",
       title: "Our Mission",
       description:
         "Empowering every individual to unlock their potential, fostering growth, and building brighter futures.",
-      link: "/about",
+      link: "/about-us",
     },
     {
       image: "/knowCard3.jpg",
       title: "Our Work",
       description:
         "We offer tailored assessments, therapy, and guidance to nurture strengths, inspire confidence, and pave the path to success.",
-      link: "/about",
+      link: "/about-us",
     },
   ];
 
