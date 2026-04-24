@@ -51,6 +51,24 @@ function Navbar() {
     };
   }, [phoneNavOpen]);
 
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setPhoneNavOpen(false);
+      }
+    };
+
+    if (phoneNavOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [phoneNavOpen]);
+
   const navItems: NavigationItem[] = [
     { name: "Home", link: "/" },
     { name: "Autism Care Center", link: "/autism-care-center" },
@@ -70,7 +88,7 @@ function Navbar() {
 
   // Update the return statement with enriched transitions
   return (
-    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] transform ${isVisible || phoneNavOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'} ${scrolled ? 'py-1 md:py-2' : 'py-3 md:py-6'}`}>
+    <nav ref={navRef} className={`fixed top-0 left-0 w-full z-[100] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] transform ${isVisible || phoneNavOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'} ${scrolled ? 'py-1 md:py-2' : 'py-3 md:py-6'}`}>
       <div className={`mx-auto max-w-[95%] xl:max-w-7xl px-4 md:px-8 rounded-full transition-all duration-1000 ${scrolled ? 'bg-white/90 backdrop-blur-xl shadow-premium py-2 md:py-3 border border-gray-100' : 'bg-white py-3 md:py-6 shadow-sm shadow-black/5'}`}>
         <div className="flex justify-between items-center">
           <Link href={"/"} className="transition-transform duration-500 hover:scale-105 active:scale-95 group">
@@ -99,9 +117,9 @@ function Navbar() {
           {/* Mobile Trigger - Premium High-Visibility Button */}
           <div className="flex lg:hidden items-center">
             <button 
-              onClick={() => setPhoneNavOpen(true)}
+              onClick={() => setPhoneNavOpen(!phoneNavOpen)}
               className="w-12 h-12 flex items-center justify-center rounded-full bg-watermelon-red text-white shadow-[0_8px_20px_-4px_rgba(255,94,98,0.4)] active:scale-90 transition-all duration-300"
-              aria-label="Open Menu"
+              aria-label="Toggle Menu"
             >
                <HiOutlineMenuAlt3 className="text-2xl" />
             </button>
