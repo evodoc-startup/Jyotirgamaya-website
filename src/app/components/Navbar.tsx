@@ -96,28 +96,36 @@ function Navbar() {
       <AnimatePresence>
         {phoneNavOpen && (
           <motion.div 
-            className="lg:hidden fixed inset-0 z-[110] bg-charcoal/95 backdrop-blur-3xl overflow-hidden"
-            initial={{ opacity: 0, clipPath: 'circle(0% at 90% 10%)' }}
-            animate={{ opacity: 1, clipPath: 'circle(150% at 90% 10%)' }}
-            exit={{ opacity: 0, clipPath: 'circle(0% at 90% 10%)' }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:hidden fixed inset-0 z-[300] bg-white overflow-hidden flex flex-col"
+            initial={{ y: '-100%' }}
+            animate={{ y: 0 }}
+            exit={{ y: '-100%' }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="flex flex-col h-full p-12">
-              <div className="flex justify-between items-center mb-16">
-                 <Image src="/Logo.png" height={150} width={150} alt="Logo" className="h-10 w-auto brightness-0 invert" />
-                 <div 
-                   className="text-5xl text-white cursor-pointer hover:rotate-90 transition-transform duration-500" 
-                   onClick={() => setPhoneNavOpen(false)}
-                 >
-                   &times;
-                 </div>
-              </div>
-              <ul className="flex flex-col gap-y-10 text-4xl md:text-5xl font-serif">
-                <NavItems items={navItems} phoneNavOpen={phoneNavOpen} setPhoneNavOpen={setPhoneNavOpen} mobile />
+            {/* Mobile Menu Header */}
+            <div className="flex justify-between items-center p-6 border-b border-gray-100">
+              <Image src="/Logo.png" height={120} width={120} alt="Logo" className="h-10 w-auto" />
+              <button 
+                onClick={() => setPhoneNavOpen(false)}
+                className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-charcoal text-3xl"
+              >
+                &times;
+              </button>
+            </div>
+
+            {/* Mobile Menu Links */}
+            <div className="flex-grow flex flex-col justify-center px-10">
+              <ul className="flex flex-col gap-y-6 text-3xl font-serif text-charcoal">
+                <NavItems items={navItems} phoneNavOpen={phoneNavOpen} setPhoneNavOpen={setPhoneNavOpen} mobile={false} />
               </ul>
-              <div className="mt-auto pt-10 border-t border-white/10 flex gap-8 justify-center">
+            </div>
+
+            {/* Mobile Menu Footer */}
+            <div className="p-10 bg-gray-50 flex flex-col gap-6">
+              <p className="text-xs uppercase tracking-widest text-charcoal/40 font-bold">Connect With Us</p>
+              <div className="flex gap-6">
                 {socials.map((social: Social, index: number) => (
-                  <Link href={social.link} key={"mob-soc" + index} className="text-3xl text-white/50 hover:text-mint transition-colors duration-300">
+                  <Link href={social.link} key={"mob-soc" + index} className="text-2xl text-charcoal/60 hover:text-watermelon-red transition-colors">
                     {social.icon}
                   </Link>
                 ))}
