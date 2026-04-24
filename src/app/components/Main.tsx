@@ -92,25 +92,25 @@ export default function Main() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="relative z-10 flex items-center h-full px-6 md:px-24 pt-20">
+      <div className="relative z-10 flex items-center h-full px-6 md:px-24 pt-24 md:pt-32">
         <motion.div 
           style={{ opacity: 1 - scrollY / 500, y: scrollY * 0.3 }}
           className="max-w-4xl"
         >
-          <div className="overflow-hidden mb-6 text-reveal-mask">
-            <p className="hero-text text-mint uppercase tracking-[0.4em] font-semibold text-xs md:text-sm">
+          <div className="overflow-hidden mb-4 md:mb-6 text-reveal-mask">
+            <p className="hero-text text-mint uppercase tracking-[0.3em] md:tracking-[0.4em] font-semibold text-[10px] md:text-sm">
               {slides[slide].topPara}
             </p>
           </div>
-          <div className="overflow-hidden mb-8 text-reveal-mask">
-            <h1 className="hero-text text-white text-[clamp(2.5rem,8vw,6rem)] font-serif leading-[1.05] tracking-tight">
+          <div className="overflow-hidden mb-6 md:mb-8 text-reveal-mask">
+            <h1 className="hero-text text-white text-[clamp(2rem,10vw,6rem)] font-serif leading-[1.1] md:leading-[1.05] tracking-tight">
               {slides[slide].heading.split(' ').map((word, i) => (
                 <span key={i} className="inline-block mr-[0.3em]">{word}</span>
               ))}
             </h1>
           </div>
-          <div className="overflow-hidden mb-12 text-reveal-mask">
-            <p className="hero-text text-white/70 text-lg md:text-2xl font-light leading-relaxed max-w-2xl">
+          <div className="overflow-hidden mb-8 md:mb-12 text-reveal-mask">
+            <p className="hero-text text-white/70 text-base md:text-2xl font-light leading-relaxed max-w-2xl">
               {slides[slide].para}
             </p>
           </div>
@@ -118,27 +118,27 @@ export default function Main() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="flex flex-wrap gap-6"
+            className="flex flex-wrap gap-4 md:gap-6"
           >
-             <button className="group relative px-10 py-5 bg-watermelon-red text-white font-bold rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl hover:shadow-watermelon-red/30">
+             <button className="group relative px-7 md:px-10 py-3.5 md:py-5 bg-watermelon-red text-white font-bold rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl hover:shadow-watermelon-red/30 text-xs md:text-base">
                 <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
                 <span className="relative z-10">Get Started</span>
              </button>
-             <button className="px-10 py-5 border-2 border-watermelon-green text-watermelon-green hover:bg-watermelon-green hover:text-white font-bold rounded-full backdrop-blur-md transition-all duration-300 shadow-lg hover:shadow-watermelon-green/20">
+             <button className="px-7 md:px-10 py-3.5 md:py-5 border-2 border-watermelon-green text-watermelon-green hover:bg-watermelon-green hover:text-white font-bold rounded-full backdrop-blur-md transition-all duration-300 shadow-lg hover:shadow-watermelon-green/20 text-xs md:text-base">
                 Learn More
              </button>
           </motion.div>
         </motion.div>
       </div>
 
-      <div className="absolute bottom-12 left-6 md:left-24 flex items-end gap-3 z-30">
+      <div className="absolute bottom-6 md:bottom-12 left-6 md:left-24 flex items-end gap-3 z-30">
         {slides.map((_, i) => (
           <div 
             key={i} 
             onClick={() => setSlide(i)}
-            className="group cursor-pointer py-4"
+            className="group cursor-pointer py-2 md:py-4"
           >
-            <div className={`h-[3px] transition-all duration-700 relative overflow-hidden ${slide === i ? 'w-16 bg-white' : 'w-8 bg-white/20 group-hover:bg-white/40'}`}>
+            <div className={`h-[2px] md:h-[3px] transition-all duration-700 relative overflow-hidden ${slide === i ? 'w-12 md:w-16 bg-white' : 'w-6 md:w-8 bg-white/20 group-hover:bg-white/40'}`}>
                {slide === i && (
                  <motion.div 
                    className="absolute inset-0 bg-mint origin-left"
@@ -148,7 +148,7 @@ export default function Main() {
                  />
                )}
             </div>
-            <p className={`mt-2 text-[10px] tracking-widest uppercase transition-opacity duration-500 ${slide === i ? 'opacity-100 text-white' : 'opacity-0 group-hover:opacity-50 text-white/50'}`}>
+            <p className={`mt-1.5 md:mt-2 text-[8px] md:text-[10px] tracking-widest uppercase transition-opacity duration-500 ${slide === i ? 'opacity-100 text-white' : 'opacity-0 group-hover:opacity-50 text-white/50'}`}>
               0{i + 1}
             </p>
           </div>
