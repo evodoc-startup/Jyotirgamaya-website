@@ -42,7 +42,7 @@ const CHAT_DATA = {
     message: "We're here to help! Best ways to reach us:",
     options: [
       { label: "Email", answer: "You can reach us at contact@jyotirgamya.com for any inquiries." },
-      { label: "Location", answer: "Our main center is open Monday-Saturday. Check the footer for the full address!" },
+      { label: "Location", answer: "Our main center is located in Rajasthan, India. Feel free to call us at +91 89496 94018 to book an in-person session or get exact directions." },
       { label: "Back to Main", next: "initial" },
     ],
   },
