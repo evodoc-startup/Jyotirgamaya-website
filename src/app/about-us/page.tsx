@@ -42,7 +42,7 @@ function AboutUsPage() {
           <div className="relative group w-full max-w-[400px] md:max-w-none">
             <div className="absolute -inset-4 bg-gradient-to-tr from-watermelon-red to-watermelon-green opacity-20 blur-2xl group-hover:opacity-30 transition-all duration-500 rounded-[2.5rem] md:rounded-[3rem]" />
             <Image
-              src='/about-team-v2.png'
+              src='/about-child-hero.png'
               height={600}
               width={600}
               alt='Our Team'
