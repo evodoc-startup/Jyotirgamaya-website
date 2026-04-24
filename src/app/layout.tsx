@@ -5,9 +5,7 @@ import Footer from './components/Footer'
 import dynamic from 'next/dynamic'
 import './globals.css'
 
-const Chatbot = dynamic(() => import('./components/Chatbot'), {
-  ssr: false, // Don't render Chatbot on the server
-})
+const Chatbot = dynamic(() => import('./components/Chatbot'))
 
 const inter = Inter({
   variable: '--font-inter',
