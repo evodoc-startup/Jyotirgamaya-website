@@ -54,8 +54,7 @@ export default function Slider() {
   return (
     <div className="flex gap-4 md:gap-8 items-center max-w-7xl mx-auto px-4 md:px-0">
       <button 
-        className="hidden md:flex flex-shrink-0 w-14 h-14 items-center justify-center rounded-full border border-gray-200 bg-white shadow-soft transition-all duration-300 hover:bg-charcoal hover:text-white hover:scale-110 active:scale-95 z-20" 
-        id="prevBtn"
+        className="swiper-button-prev-custom hidden md:flex flex-shrink-0 w-14 h-14 items-center justify-center rounded-full border border-gray-200 bg-white shadow-soft transition-all duration-300 hover:bg-charcoal hover:text-white hover:scale-110 active:scale-95 z-20" 
       >
         <FaChevronLeft className="text-xl" />
       </button>
@@ -66,8 +65,8 @@ export default function Slider() {
         loop={true}
         navigation={{
           enabled: true,
-          nextEl: "#nextBtn",
-          prevEl: "#prevBtn",
+          nextEl: ".swiper-button-next-custom",
+          prevEl: ".swiper-button-prev-custom",
         }}
         breakpoints={{
           640: { slidesPerView: 1 },
@@ -114,18 +113,17 @@ export default function Slider() {
       </Swiper>
 
       <button 
-        className="hidden md:flex flex-shrink-0 w-14 h-14 items-center justify-center rounded-full border border-gray-200 bg-white shadow-soft transition-all duration-300 hover:bg-charcoal hover:text-white hover:scale-110 active:scale-95 z-20" 
-        id="nextBtn"
+        className="swiper-button-next-custom hidden md:flex flex-shrink-0 w-14 h-14 items-center justify-center rounded-full border border-gray-200 bg-white shadow-soft transition-all duration-300 hover:bg-charcoal hover:text-white hover:scale-110 active:scale-95 z-20" 
       >
         <FaChevronRight className="text-xl" />
       </button>
 
       {/* Mobile Navigation Buttons */}
       <div className="flex md:hidden absolute bottom-0 left-1/2 -translate-x-1/2 gap-4 z-20">
-         <button id="prevBtnMobile" className="w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-soft border border-gray-100">
+         <button className="swiper-button-prev-custom w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-soft border border-gray-100 hover:bg-gray-50 active:scale-95 transition-all">
             <FaChevronLeft />
          </button>
-         <button id="nextBtnMobile" className="w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-soft border border-gray-100">
+         <button className="swiper-button-next-custom w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-soft border border-gray-100 hover:bg-gray-50 active:scale-95 transition-all">
             <FaChevronRight />
          </button>
       </div>
