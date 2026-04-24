@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import Story from "./components/Story";
 import Why from "./components/Why";
 
-function page() {
+function AboutUsPage() {
   return (
     <>
       <section className='min-h-[60vh] pt-28 md:pt-40 pb-16 md:pb-20 w-full lg:px-28 sm:px-16 px-6 flex md:flex-row flex-col-reverse items-center gap-10 md:gap-16 relative overflow-hidden bg-white'>
@@ -66,4 +66,4 @@ function page() {
   );
 }
 
-export default page;
+export default AboutUsPage;
