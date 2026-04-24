@@ -31,11 +31,16 @@ export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
     setIsSubmitting(true);
     
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(form);
     formData.append("access_key", "f2a5478c-4b9d-4858-bc1d-afcf5117b6a0");
     
     const object = Object.fromEntries(formData);
@@ -53,7 +58,7 @@ export default function ContactPage() {
 
       const data = await response.json();
       
-      if (data.success) {
+      if (response.status === 200 || data.success) {
         setIsSubmitted(true);
       } else {
         console.error("Error submitting form:", data);
@@ -127,12 +132,12 @@ export default function ContactPage() {
             <AnimatePresence mode="wait">
               {!isSubmitted ? (
                 <motion.form 
+                  id="contact-form"
                   key="form"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   className="space-y-8 flex-grow" 
-                  onSubmit={handleSubmit}
                 >
                   {/* Web3Forms required hidden fields */}
                   <input type="hidden" name="from_name" value="Jyotirgamya Website" />
@@ -179,7 +184,7 @@ export default function ContactPage() {
                       className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-indigo transition-all resize-none"
                     />
                   </div>
-                  <button type="submit" disabled={isSubmitting} className="w-full md:w-fit px-12 py-6 bg-charcoal text-white rounded-full font-bold uppercase tracking-widest text-sm hover:bg-indigo transition-all duration-500 shadow-xl transform hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed">
+                  <button type="button" onClick={handleSubmit} disabled={isSubmitting} className="w-full md:w-fit px-12 py-6 bg-charcoal text-white rounded-full font-bold uppercase tracking-widest text-sm hover:bg-indigo transition-all duration-500 shadow-xl transform hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed">
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
                 </motion.form>
