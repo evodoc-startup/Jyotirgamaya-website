@@ -14,7 +14,7 @@ function NavItems({items, phoneNavOpen, setPhoneNavOpen, mobile} : {items : Navi
             className={`${
               pathname == item.link 
                 ? "text-[#FE3E3E]" 
-                : mobile ? "text-white/90" : "text-charcoal/80"
+                : "text-charcoal/80"
             } transition-colors duration-300 hover:text-[#FE3E3E] font-medium tracking-normal`}>
             {item.name}
           </Link>
