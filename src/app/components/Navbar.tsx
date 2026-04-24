@@ -84,11 +84,15 @@ function Navbar() {
               </Link>
             ))}
           </div>
-          <div className="flex lg:hidden text-3xl items-center text-charcoal">
-             <HiOutlineMenuAlt3 
-              onClick={() => setPhoneNavOpen(true)} 
-              className="cursor-pointer transition-transform duration-300 hover:scale-110"
-             />
+          {/* Mobile Trigger - Premium High-Visibility Button */}
+          <div className="flex lg:hidden items-center">
+            <button 
+              onClick={() => setPhoneNavOpen(true)}
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-watermelon-red text-white shadow-[0_8px_20px_-4px_rgba(255,94,98,0.4)] active:scale-90 transition-all duration-300"
+              aria-label="Open Menu"
+            >
+               <HiOutlineMenuAlt3 className="text-2xl" />
+            </button>
           </div>
         </div>
       </div>
@@ -96,7 +100,7 @@ function Navbar() {
       <AnimatePresence>
         {phoneNavOpen && (
           <motion.div 
-            className="lg:hidden fixed inset-0 z-[300] bg-white overflow-hidden flex flex-col"
+            className="lg:hidden fixed inset-0 z-[1000] bg-white overflow-hidden flex flex-col"
             initial={{ y: '-100%' }}
             animate={{ y: 0 }}
             exit={{ y: '-100%' }}
