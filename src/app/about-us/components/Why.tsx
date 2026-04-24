@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { section } from "motion/react-client";
 
 function Why() {
   const circularElements = [
