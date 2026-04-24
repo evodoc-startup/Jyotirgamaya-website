@@ -48,8 +48,18 @@ function KnowMore() {
   };
 
   return (
-    <div className="w-full h-fit bg-[#f9fafb] relative py-32 overflow-hidden">
-      <div className='absolute inset-0 bg-[url("/knowmorebg.png")] bg-cover bg-fixed opacity-5 -z-10 animate-pulse-slow'></div>
+    <div className="w-full h-fit bg-[#f9fafb] relative py-32 overflow-hidden z-0">
+      {/* Optimized Background Image */}
+      <div className="absolute inset-0 -z-10 opacity-5 animate-pulse-slow">
+        <Image 
+          src="/knowmorebg.jpg" 
+          alt="background pattern" 
+          fill 
+          sizes="100vw"
+          quality={30}
+          className="object-cover" 
+        />
+      </div>
       
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
@@ -83,6 +93,8 @@ function KnowMore() {
                 src={item.image}
                 alt={item.title}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                quality={60}
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500" />

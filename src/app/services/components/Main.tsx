@@ -23,7 +23,7 @@ function Main () {
   }
   return (
     <motion.main
-      className={`w-full md:h-[85vh] h-fit relative select-none bg-[url("/services.png")] bg-cover bg-no-repeat`}
+      className={`w-full md:h-[85vh] h-fit relative select-none bg-[url("/services.jpg")] bg-cover bg-no-repeat`}
       animate={{height:"60vh", transition: {duration: 2, delay: 2}}}
     >
       <div className='h-full w-full bg-[#c921a2] md:py-0 sm:py-10 py-20 bg-opacity-50 flex flex-col items-center justify-center lg:px-44 md:px-20 px-10'>

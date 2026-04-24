@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import main1 from "../../../public/main1.png";
-import main2 from "../../../public/main2.png";
-import main3 from "../../../public/main3.png";
+import main1 from "../../../public/main1.jpg";
+import main2 from "../../../public/main2.jpg";
+import main3 from "../../../public/main3.jpg";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { motion, AnimatePresence } from "motion/react";
 
